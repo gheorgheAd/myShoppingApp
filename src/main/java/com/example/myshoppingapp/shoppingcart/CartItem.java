@@ -2,9 +2,15 @@ package com.example.myshoppingapp.shoppingcart;
 
 import com.example.myshoppingapp.model.Customer;
 import com.example.myshoppingapp.model.Product;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "cart_items")
 public class CartItem {
@@ -20,38 +26,5 @@ public class CartItem {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    private Integer qunatity;
-
-    public CartItem() {
-    }
-
-    public CartItem(Product product, Customer customer, Integer qunatity) {
-        this.product = product;
-        this.customer = customer;
-        this.qunatity = qunatity;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
+    private Integer quantity;
 }
