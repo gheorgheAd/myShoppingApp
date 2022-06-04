@@ -23,5 +23,4 @@ public class Product {
     private String image;
     private Float price;
     private String producer;
-    private Integer intensity;
 }

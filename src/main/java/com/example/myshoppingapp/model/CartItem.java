@@ -1,4 +1,4 @@
-package com.example.myshoppingapp.shoppingcart;
+package com.example.myshoppingapp.model;
 
 import com.example.myshoppingapp.model.User;
 import com.example.myshoppingapp.model.Product;

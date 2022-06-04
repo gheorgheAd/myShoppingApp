@@ -5,27 +5,32 @@ import com.example.myshoppingapp.repository.ProductRepository;
 import com.example.myshoppingapp.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping
 @AllArgsConstructor
 public class ProductController {
 
     private ProductService service;
 
-    @GetMapping
+    @GetMapping("/products")
     public List<Product> showProducts() {
         return service.findAll();
     }
 
     @GetMapping("/product/{id}")
-    public Product showProductById(@PathVariable Integer id) {
-        return service.findById(id);
+    public ResponseEntity<Product> showProductById(@PathVariable Integer id) {
+        return ResponseEntity.ok(service.findById(id));
+    }
+
+    @PostMapping("/addproduct")
+    public ResponseEntity<Product> addProduct(@RequestBody Product product) {
+        service.addProduct(product);
+        return ResponseEntity.ok(product);
     }
 }
