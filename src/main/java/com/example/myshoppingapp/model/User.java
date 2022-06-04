@@ -13,8 +13,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "customers")
-public class Customer {
+@Table(name = "users")
+public class User {
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,8 +23,8 @@ public class Customer {
     private String firstName;
     private String lastName;
     private String email;
-    private String password;
     private Long phoneNumber;
+    private String password;
     private Role role;
     private String address;
 }

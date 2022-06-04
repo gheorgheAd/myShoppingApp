@@ -1,6 +1,6 @@
 package com.example.myshoppingapp.shoppingcart;
 
-import com.example.myshoppingapp.model.Customer;
+import com.example.myshoppingapp.model.User;
 import com.example.myshoppingapp.model.Product;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,7 +24,7 @@ public class CartItem {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Customer customer;
+    private User user;
 
     private Integer quantity;
 }
