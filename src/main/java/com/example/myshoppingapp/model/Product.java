@@ -18,9 +18,10 @@ public class Product {
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
-    private String producer;
-    private Float price;
+    private String title;
     private String description;
+    private String image;
+    private Float price;
+    private String producer;
     private Integer intensity;
 }
