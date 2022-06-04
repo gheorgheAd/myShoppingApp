@@ -1,9 +1,9 @@
--- create table product
+-- create table products
 -- (
 --     product_id          int auto_increment
 --         primary key,
 --     title               varchar(20) not null,
---     product_description text        null,
+--     description         text        null,
 --     image               text        null,
 --     price               double      null
 -- );
