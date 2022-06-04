@@ -22,9 +22,5 @@ public class CartItem {
     @JoinColumn(name = "product_id")
     private Product product;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private User user;
-
     private Integer quantity;
 }
