@@ -1,8 +1,9 @@
-package com.example.myshoppingapp.service;
+package com.example.myshoppingapp.service.impl;
 
 import com.example.myshoppingapp.exception.NoProductFoundException;
 import com.example.myshoppingapp.model.Product;
 import com.example.myshoppingapp.repository.ProductRepository;
+import com.example.myshoppingapp.service.ProductService;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.http.HttpStatus;

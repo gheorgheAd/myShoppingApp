@@ -14,11 +14,15 @@ import javax.persistence.*;
 public class CartItem {
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
+    // UUID
 
     @ManyToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
     private Integer quantity;
+
+    private Long userId;
 }
