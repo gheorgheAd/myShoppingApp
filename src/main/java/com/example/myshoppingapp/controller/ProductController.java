@@ -12,25 +12,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/products")
 @AllArgsConstructor
+@CrossOrigin("http://localhost:4200")
 public class ProductController {
 
     private ProductService service;
 
-    @GetMapping("/products")
+    @GetMapping
     public List<Product> showProducts() {
         return service.findAll();
     }
 
-    @GetMapping("/product/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Product> showProductById(@PathVariable Integer id) {
         return ResponseEntity.ok(service.findById(id));
     }
 
-    @PostMapping("/addproduct")
+    @PostMapping
     public ResponseEntity<Product> addProduct(@RequestBody Product product) {
         service.addProduct(product);
         return ResponseEntity.ok(product);
     }
 }
+
