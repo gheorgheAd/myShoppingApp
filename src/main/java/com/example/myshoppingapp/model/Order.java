@@ -10,7 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "order_table")
+@Table(name = "orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +18,7 @@ public class Order {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "purchased_item_id")
+    @JoinColumn(name = "cart_item_id")
     private CartItem cartItem;
 
     @ManyToOne
