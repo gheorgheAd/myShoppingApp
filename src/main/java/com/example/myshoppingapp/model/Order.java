@@ -1,6 +1,5 @@
 package com.example.myshoppingapp.model;
 
-import com.example.myshoppingapp.shoppingcart.CartItem;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

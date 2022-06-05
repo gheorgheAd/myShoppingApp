@@ -1,10 +1,12 @@
 package com.example.myshoppingapp.service;
 
-import com.example.myshoppingapp.exception.NotFoundException;
+import com.example.myshoppingapp.exception.NoProductFoundException;
 import com.example.myshoppingapp.model.Product;
 import com.example.myshoppingapp.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +25,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     @SneakyThrows
     public Product findById(Integer id) {
-        return repository.findById(id).orElseThrow(() -> new NotFoundException("Product not found!"));
+        return repository.findById(id).orElseThrow(() -> new NoProductFoundException("Product not found!"));
+    }
+
+    @Override
+    public Product addProduct(Product product) {
+        return repository.save(product);
     }
 }
