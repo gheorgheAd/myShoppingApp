@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,9 +18,9 @@ public class Order {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "cart_item_id")
-    private CartItem cartItem;
+    private Float total_price;
+
+    private Date date;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

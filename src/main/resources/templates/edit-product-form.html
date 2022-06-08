@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>[[${pageTitle}]]</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+  <style>
+        div {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: inline-block;
+            width: 150px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid text-center">
+
+  <div><h1>[[${editPageTitle}]]</h1></div>
+
+  <form th:action="@{/products/admin/save}" method="post" th:object="${product}">
+    <input type="hidden" th:field="*{id}">
+    <fieldset>
+      <div>
+        <div>
+          <label>Title</label>
+          <input type="text" th:field="*{title}"/>
+        </div>
+        <div>
+          <label>Description</label>
+          <input type="text" th:field="*{description}"/>
+        </div>
+        <div>
+          <label>Image Link</label>
+          <input type="text" th:field="*{image}"/>
+        </div>
+        <div>
+          <label>Price</label>
+          <input type="number" th:field="*{price}"/>
+        </div>
+        <div>
+          <label>Producer</label>
+          <input type="text" th:field="*{producer}"/>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary">Update</button>
+          <button onclick="cancelForm()"
+                  type="button"
+                  class="btn btn-primary">Cancel
+          </button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+
+</div>
+<script type="text/javascript">
+    function cancelForm() {
+        window.location = "/products/admin";
+    }
+</script>
+</body>
+</html>

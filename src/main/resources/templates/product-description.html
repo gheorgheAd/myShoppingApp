@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Manage Products</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container-fluid text-center">
+	<th:block>
+			<div>
+				<h5>[[${productById.title}]]</h5>
+			</div>
+			<div>
+				<h5>[[${productById.description}]]</h5>
+			</div>
+			<div>
+				<h5>[[${productById.image}]]</h5>
+			</div>
+			<div>
+				<h5>[[${productById.price}]]</h5>
+			</div>
+			<div>
+				<h5>[[${productById.producer}]]</h5>
+			</div>
+	</th:block>
+</div>
+</body>
+</html>
