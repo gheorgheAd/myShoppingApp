@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <style>
+        th {
+            text-align: center;
+        }
+        table {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container-fluid text-center">
+    <div>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Producer</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="product : ${products}">
+                <tr>
+                    <td>[[${product.title}]]</td>
+                    <td>[[${product.price}]]</td>
+                    <td>[[${product.producer}]]</td>
+                    <td>
+                        <div class="container-fluid text-center">
+                            <a th:href="@{/products/} + ${product.id}">
+                                <button type="submit" class="btn btn-primary">More</button>
+                            </a>
+                            <button type="submit" class="btn btn-primary" onclick="addToCart()">Add To Cart</button>
+                        </div>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

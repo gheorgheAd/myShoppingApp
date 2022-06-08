@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+
+    <style>
+        .space {
+            margin-bottom:50px;
+        }
+
+        body {
+          background-image: url('https://images.pexels.com/photos/1419939/pexels-photo-1419939.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+          background-size: cover;
+        }
+    </style>
+
+</head>
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container-fluid text-center">
+    <div class="space">
+        <h1>Welcome to our Coffee Store</h1>
+    </div>
+
+    <div class="space">
+        <a class="h3" th:href="@{/products}">Shop Our Coffee Selections</a>
+    </div>
+
+    <div class="container-fluid text-center space">
+        <a th:href="@{/register}">
+            <button type="submit" class="btn btn-primary">Register</button>
+        </a>
+    </div>
+</div>
+</body>
+</html>
