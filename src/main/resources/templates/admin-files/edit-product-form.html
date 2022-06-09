@@ -5,11 +5,7 @@
   <title>[[${pageTitle}]]</title>
   <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
   <style>
-        div {
-            margin-bottom: 15px;
-        }
-
-        label {
+       label {
             display: inline-block;
             width: 150px;
             text-align: left;
@@ -17,11 +13,14 @@
     </style>
 </head>
 <body>
+
+<div th:replace="admin-files/admin-navbar :: navbar"></div>
+
 <div class="container-fluid text-center">
 
   <div><h1>[[${editPageTitle}]]</h1></div>
 
-  <form th:action="@{/products/admin/save}" method="post" th:object="${product}">
+  <form th:action="@{admin/products-administration/save}" method="post" th:object="${product}">
     <input type="hidden" th:field="*{id}">
     <fieldset>
       <div>

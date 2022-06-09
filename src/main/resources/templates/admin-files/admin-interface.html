@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+
+    <style>
+        .space {
+            margin-bottom:50px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div th:replace="admin-files/admin-navbar :: navbar"></div>
+
+<div class="container-fluid text-center">
+    <div class="space">
+        <h1>Coffee Shop Administration Panel</h1>
+    </div>
+
+    <div class="container-fluid text-center space">
+        <a th:href="@{/admin/products-administration}">
+            <button type="submit" class="btn btn-primary">Products</button>
+        </a>
+    </div>
+
+    <div class="container-fluid text-center space">
+        <a th:href="@{/admin/users-administration}">
+            <button type="submit" class="btn btn-primary">Users</button>
+        </a>
+    </div>
+
+</div>
+</body>
+</html>

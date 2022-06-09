@@ -36,51 +36,5 @@ public class ProductController {
         modelMap.addAttribute("productById", product);
         return "product-description";
     }
-
-    @GetMapping("/admin")
-    public String showProductsForAdmin(ModelMap modelMap) {
-        List<Product> products = service.findAll();
-        modelMap.addAttribute("products", products);
-        return "products-administration";
-    }
-
-    @GetMapping("/admin/add")
-    public String addProduct(ModelMap modelMap) {
-        modelMap.addAttribute("product", new Product());
-        modelMap.addAttribute("addPageTitle", "Add Product In Shop");
-        return "add-product-form";
-    }
-
-    @PostMapping("/admin/save")
-    public String saveProduct(Product product, RedirectAttributes redirectAttributes) {
-        service.addProduct(product);
-        redirectAttributes.addFlashAttribute("message", "Product saved successfully !");
-        return "redirect:/products/admin";
-    }
-
-    @GetMapping("/admin/edit/{id}")
-    public String editProduct(@PathVariable Long id, ModelMap modelMap, RedirectAttributes redirectAttributes) {
-        try {
-            Product product = service.findById(id);
-            modelMap.addAttribute(product);
-            modelMap.addAttribute("editPageTitle", "Edit product (ID " + id + ")");
-            redirectAttributes.addFlashAttribute("message", "Product successfully updated !");
-            return "edit-product-form";
-        } catch (NoProductFoundException exception) {
-            redirectAttributes.addFlashAttribute("message", exception.getMessage());
-        }
-        return "redirect:/products/admin";
-    }
-
-    @GetMapping("/admin/delete/{id}")
-    public String deleteProductById(@PathVariable Long id, RedirectAttributes redirectAttributes) {
-        try {
-            service.deleteById(id);
-            redirectAttributes.addFlashAttribute("message", "Product successfully deleted !");
-        } catch (NoProductFoundException exception) {
-            redirectAttributes.addFlashAttribute("message", exception.getMessage());
-        }
-        return "redirect:/products/admin";
-    }
 }
 

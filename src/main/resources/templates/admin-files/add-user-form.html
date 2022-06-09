@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${pageTitle}]]</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <style>
+     label {
+            display: inline-block;
+            width: 150px;
+            text-align: left;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container-fluid text-center">
+
+    <div th:replace="admin-files/admin-navbar :: navbar"></div>
+
+    <div><h1>Add New User</h1></div>
+
+    <form th:action="@{/admin/users-administration/save}" method="post" th:object="${user}">
+        <fieldset>
+            <div>
+                <div>
+                    <label>First Name</label>
+                    <input type="text" th:field="*{firstName}"/>
+                </div>
+                <div>
+                    <label>Last Name</label>
+                    <input type="text" th:field="*{lastName}"/>
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input type="email" th:field="*{email}">
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input type="password" th:field="*{password}"/>
+                </div>
+                <div>
+                    <label>Phone Number</label>
+                    <input type="text" th:field="*{phoneNumber}"/>
+                </div>
+                <div>
+                    <label>Address</label>
+                    <input type="text" th:field="*{address}"/>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button onclick="cancelForm()"
+                            type="button"
+                            class="btn btn-primary">Cancel
+                    </button>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+
+</div>
+<script type="text/javascript">
+    function cancelForm() {
+        window.location = "/admin/users-administration";
+    }
+
+</script>
+</body>
+</html>
