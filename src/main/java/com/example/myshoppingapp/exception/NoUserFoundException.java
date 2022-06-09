@@ -6,7 +6,4 @@ public class NoUserFoundException extends Exception {
         super(message);
     }
 
-    public NoUserFoundException() {
-
-    }
 }
