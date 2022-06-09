@@ -5,11 +5,7 @@
   <title>[[${pageTitle}]]</title>
   <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
   <style>
-        div {
-            margin-bottom: 15px;
-        }
-
-        label {
+       label {
             display: inline-block;
             width: 150px;
             text-align: left;
@@ -17,35 +13,42 @@
     </style>
 </head>
 <body>
-<div class="container-fluid text-center">
-  <div><h1>[[${addPageTitle}]]</h1></div>
 
-  <form th:action="@{/products/admin/save}" method="post" th:object="${product}">
-    <input type="hidden" th:field="*{id}">
+<div th:replace="admin-files/admin-navbar :: navbar"></div>
+
+<div class="container-fluid text-center">
+
+  <div><h1>[[${editPageTitle}]]</h1></div>
+
+  <form th:action="@{/admin/users-administration/save}" method="post" th:object="${user}">
     <fieldset>
       <div>
         <div>
-          <label>Title</label>
-          <input type="text" th:field="*{title}"/>
+          <label>First Name</label>
+          <input type="text" th:field="*{firstName}"/>
         </div>
         <div>
-          <label>Description</label>
-          <input type="text" th:field="*{description}"/>
+          <label>Last Name</label>
+          <input type="text" th:field="*{lastName}"/>
         </div>
         <div>
-          <label>Image Link</label>
-          <input type="text" th:field="*{image}"/>
+          <label>Email</label>
+          <input type="email" th:field="*{email}">
         </div>
         <div>
-          <label>Price</label>
-          <input type="number" th:field="*{price}"/>
+          <label>Password</label>
+          <input type="password" th:field="*{password}"/>
         </div>
         <div>
-          <label>Producer</label>
-          <input type="text" th:field="*{producer}"/>
+          <label>Phone Number</label>
+          <input type="text" th:field="*{phoneNumber}"/>
         </div>
         <div>
-          <button type="submit" class="btn btn-primary">Save</button>
+          <label>Address</label>
+          <input type="text" th:field="*{address}"/>
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary">Update</button>
           <button onclick="cancelForm()"
                   type="button"
                   class="btn btn-primary">Cancel

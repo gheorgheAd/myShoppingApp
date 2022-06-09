@@ -7,15 +7,14 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping
-public class UserController {
+public class LoginController {
 
     UserService userService;
 
-    public UserController(UserService userService) {
+    public LoginController(UserService userService) {
         this.userService = userService;
     }
 
@@ -32,7 +31,7 @@ public class UserController {
 
     @PostMapping("/register/save")
     public String saveUser(User user) {
-        userService.save(user);
+        userService.saveUser(user);
         return "redirect:/signin";
     }
 }
