@@ -28,11 +28,18 @@ public class User {
 
     private String lastName;
 
-    private String email;
+    private String username;
 
-    private String phoneNumber;
+    private String email;
 
     private String password;
 
     private String address;
+
+    private String phoneNumber;
+
+    private String role;
+
+    private boolean enabled;
+
 }

@@ -40,7 +40,7 @@ public class ShoppingCartController {
         List<CartItem> productsForCurrentUser = cartItemService.findCartItemByUserId(userId);
 
         modelMap.addAttribute("products");
-        return "shoppingcart";
+        return "shoppingCart";
     }
 
 //    @GetMapping("/shoppingCart/addProduct/{productId}")
