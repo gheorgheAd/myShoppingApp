@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>Manage Products</title>
@@ -7,7 +9,7 @@
 </head>
 <body>
 
-<div th:replace="admin-files/admin-navbar :: navbar"></div>
+<div th:replace="fragments/navbar :: navbar"></div>
 
 <div class="container-fluid text-center">
 
