@@ -17,4 +17,3 @@ public class MyUserDetailsService implements UserDetailsService {
         User user = userRepository.findByUsername(username);
         return new MyUserDetails(user);
     }
-}

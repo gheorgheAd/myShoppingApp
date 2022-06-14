@@ -6,8 +6,11 @@ import com.example.myshoppingapp.model.Product;
 import com.example.myshoppingapp.model.User;
 import com.example.myshoppingapp.service.ProductService;
 import com.example.myshoppingapp.service.UserService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -74,6 +77,7 @@ public class AdminController {
         redirectAttributes.addFlashAttribute("message", "Product updated successfully !");
         return "redirect:/admin/products-administration";
     }
+
     @GetMapping("/products-administration/delete/{id}")
     public String deleteProductById(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         try {
@@ -101,6 +105,8 @@ public class AdminController {
 
     @PostMapping("/users-administration/save")
     public String saveUser(User user, RedirectAttributes redirectAttributes) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
+        user.setPassword(encoder.encode(user.getPassword()));
         userService.saveUser(user);
         redirectAttributes.addFlashAttribute("message", "User saved successfully !");
         return "redirect:/admin/users-administration";
@@ -120,7 +126,6 @@ public class AdminController {
         return "redirect:/admin/users-administration";
     }
 
-
     @PostMapping("/users-administration/update")
     public String updateUser(User user, RedirectAttributes redirectAttributes) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
@@ -129,6 +134,7 @@ public class AdminController {
         redirectAttributes.addFlashAttribute("message", "User updated successfully !");
         return "redirect:/admin/users-administration";
     }
+
     @GetMapping("/users-administration/delete/{id}")
     public String deleteUserById(@PathVariable Long id, RedirectAttributes redirectAttributes) {
         try {

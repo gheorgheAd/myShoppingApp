@@ -28,6 +28,11 @@ public class LoginController {
         return "logout";
     }
 
+    @GetMapping("/logout")
+    public String logout() {
+        return "logout";
+    }
+  
     @GetMapping("/register")
     public String addUser(ModelMap modelMap) {
         modelMap.addAttribute("newUser", new User());
