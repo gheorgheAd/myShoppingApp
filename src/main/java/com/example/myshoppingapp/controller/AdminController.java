@@ -6,7 +6,9 @@ import com.example.myshoppingapp.model.Product;
 import com.example.myshoppingapp.model.User;
 import com.example.myshoppingapp.service.ProductService;
 import com.example.myshoppingapp.service.UserService;
-import org.springframework.stereotype.Controller;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,7 +44,7 @@ public class AdminController {
     @GetMapping("/products-administration/add")
     public String addProduct(ModelMap modelMap) {
         modelMap.addAttribute("product", new Product());
-        modelMap.addAttribute("addPageTitle", "Add Product In Shop");
+        modelMap.addAttribute("pageTitleMessage", "Add Product In Shop");
         return "/admin-files/add-product-form";
     }
 
@@ -58,12 +60,19 @@ public class AdminController {
         try {
             Product product = productService.findById(id);
             modelMap.addAttribute(product);
-            modelMap.addAttribute("editPageTitle", "Edit product (ID " + id + ")");
+            modelMap.addAttribute("pageTitleMessage", "Edit product (ID " + id + ")");
             redirectAttributes.addFlashAttribute("message", "Product successfully updated !");
             return "admin-files/edit-product-form";
         } catch (NoProductFoundException exception) {
             redirectAttributes.addFlashAttribute("message", exception.getMessage());
         }
+        return "redirect:/admin/products-administration";
+    }
+
+    @PostMapping("/products-administration/update")
+    public String updateProduct(Product product, RedirectAttributes redirectAttributes) {
+        productService.addProduct(product);
+        redirectAttributes.addFlashAttribute("message", "Product updated successfully !");
         return "redirect:/admin/products-administration";
     }
 
@@ -94,6 +103,8 @@ public class AdminController {
 
     @PostMapping("/users-administration/save")
     public String saveUser(User user, RedirectAttributes redirectAttributes) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
+        user.setPassword(encoder.encode(user.getPassword()));
         userService.saveUser(user);
         redirectAttributes.addFlashAttribute("message", "User saved successfully !");
         return "redirect:/admin/users-administration";
@@ -110,6 +121,15 @@ public class AdminController {
         } catch (NoUserFoundException exception) {
             redirectAttributes.addFlashAttribute("message", exception.getMessage());
         }
+        return "redirect:/admin/users-administration";
+    }
+
+    @PostMapping("/users-administration/update")
+    public String updateUser(User user, RedirectAttributes redirectAttributes) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
+        user.setPassword(encoder.encode(user.getPassword()));
+        userService.saveUser(user);
+        redirectAttributes.addFlashAttribute("message", "User updated successfully !");
         return "redirect:/admin/users-administration";
     }
 

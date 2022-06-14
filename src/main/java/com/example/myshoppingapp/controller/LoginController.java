@@ -18,11 +18,15 @@ public class LoginController {
         this.userService = userService;
     }
 
-    @GetMapping("/signin")
-    public String signIn() {
-        return "signin";
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 
+    @GetMapping("/logout")
+    public String logout() {
+        return "logout";
+    }
     @GetMapping("/register")
     public String addUser(ModelMap modelMap) {
         modelMap.addAttribute("newUser", new User());
@@ -32,6 +36,6 @@ public class LoginController {
     @PostMapping("/register/save")
     public String saveUser(User user) {
         userService.saveUser(user);
-        return "redirect:/signin";
+        return "successful-registration-message";
     }
 }
