@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns: sec="//www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="UTF-8">
+  <title>Log in</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+  <style>
+    div {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: inline-block;
+      width: 150px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container-fluid text-center">
+  <div><h1>Sign In</h1></div>
+  <p th:if="${loginError}" class="error">Wrong username or password</p>
+  <form th:action="@{/login}" method="post">
+    <fieldset>
+      <div>
+        <div>
+          <label for="username">Username</label>:
+          <input type="text" id="username" name="username" autofocus="autofocus" /> <br />
+        </div>
+        <div>
+          <label for="password">Password</label>:
+          <input type="password" id="password" name="password" /> <br />
+        </div>
+        <div>
+          <button type="submit" class="btn btn-primary">Sign in</button>
+          <button onclick="cancelForm()"
+                  type="button"
+                  class="btn btn-primary">Cancel
+          </button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+<script type="text/javascript">
+  function cancelForm() {
+    window.location = "/";
+  }
+</script>
+
+</body>
+</html>

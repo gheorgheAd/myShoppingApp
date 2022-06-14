@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns: sec="//www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
@@ -147,32 +149,38 @@
 
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<div class="container-fluid text-center">
-    <div class="space">
-        <h1>Welcome to our Coffee Store</h1>
-    </div>
+<img th:src="@{DXQquAwVoAAA28c.png}"/>
 
-    <div class="space">
-        <a class="h3" th:href="@{/products}">Shop Our Coffee Selections</a>
-    </div>
+<div class="space">
+    <h1>Welcome to our Coffee Store</h1>
+</div>
 
-    <div class="container-fluid text-center space">
-        <a th:href="@{/register}">
-            <button type="submit" class="btn btn-primary">Register</button>
-        </a>
-    </div>
+<div class="space">
+    <a class="h3" th:href="@{/products}">Shop Our Coffee Selections</a>
 </div>
-<div class="coffee">
-    <div class="coffee-mug"></div>
-    <div class="coffee-handle"></div>
-    <div class="coffee-liquidCont">
-        <div class="coffee-liquid"></div>
-        <div class="code">
-            <span class="code-icon"></span>
-            <span class="code-icon">Coffee Please!</span>
-            <span class="code-icon"></span>
-        </div>
-    </div>
+
+<div class="container-fluid text-center space" sec:authorize="!isAuthenticated()">
+    <a th:href="@{/register}">
+        <button type="submit" class="btn btn-primary">Register</button>
+    </a>
 </div>
+<div class="container-fluid text-center space" sec:authorize="hasRole('ADMIN')">
+    <a th:href="@{/admin}">
+        <button type="submit" class="btn btn-primary">Go To Admin Panel</button>
+    </a>
+</div>
+</div>
+<!--<div class="coffee">-->
+<!--    <div class="coffee-mug"></div>-->
+<!--    <div class="coffee-handle"></div>-->
+<!--    <div class="coffee-liquidCont">-->
+<!--        <div class="coffee-liquid"></div>-->
+<!--        <div class="code">-->
+<!--            <span class="code-icon"></span>-->
+<!--            <span class="code-icon">Coffee Please!</span>-->
+<!--            <span class="code-icon"></span>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 </body>
 </html>
