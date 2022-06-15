@@ -23,6 +23,15 @@ public class UserService {
     public User saveUser(User user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
         user.setPassword(encoder.encode(user.getPassword()));
+
+        if(user.getRole() == null) {
+            user.setRole("ROLE_USER");
+        }
+
+        if(!user.isEnabled()) {
+            user.setEnabled(true);
+        }
+
         return userRepository.save(user);
     }
 
