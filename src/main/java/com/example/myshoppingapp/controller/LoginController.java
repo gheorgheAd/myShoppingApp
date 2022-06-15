@@ -1,7 +1,7 @@
 package com.example.myshoppingapp.controller;
 
 import com.example.myshoppingapp.model.User;
-import com.example.myshoppingapp.service.UserService;
+import com.example.myshoppingapp.service.UserServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping
 public class LoginController {
 
-    UserService userService;
+    UserServiceImpl userServiceImpl;
 
-    public LoginController(UserService userService) {
-        this.userService = userService;
+    public LoginController(UserServiceImpl userServiceImpl) {
+        this.userServiceImpl = userServiceImpl;
     }
 
     @GetMapping("/login")
@@ -36,7 +36,7 @@ public class LoginController {
 
     @PostMapping("/register/save")
     public String saveUser(User user) {
-        userService.saveUser(user);
+        userServiceImpl.saveUser(user);
         return "redirect:/successful-registration-message";
     }
 }

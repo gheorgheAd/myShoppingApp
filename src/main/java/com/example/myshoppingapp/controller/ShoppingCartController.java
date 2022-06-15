@@ -1,45 +1,59 @@
 package com.example.myshoppingapp.controller;
 
-import com.example.myshoppingapp.service.CartItemService;
-import com.example.myshoppingapp.service.ProductService;
-import com.example.myshoppingapp.service.UserService;
+import com.example.myshoppingapp.service.CartItemServiceImpl;
+import com.example.myshoppingapp.service.ProductServiceImpl;
+import com.example.myshoppingapp.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ShoppingCartController {
 
-    UserService userService;
-    CartItemService cartItemService;
-    ProductService productService;
+    UserServiceImpl userServiceImpl;
+    CartItemServiceImpl cartItemServiceImpl;
+    ProductServiceImpl productServiceImpl;
 
     @Autowired
     public ShoppingCartController(
-            UserService userService,
-            CartItemService cartItemService,
-            ProductService productService){
-        this.userService = userService;
-        this.cartItemService = cartItemService;
-        this.productService = productService;
+            UserServiceImpl userServiceImpl,
+            CartItemServiceImpl cartItemServiceImpl,
+            ProductServiceImpl productServiceImpl) {
+        this.userServiceImpl = userServiceImpl;
+        this.cartItemServiceImpl = cartItemServiceImpl;
+        this.productServiceImpl = productServiceImpl;
     }
 
-//    @GetMapping("/shoppingCart")
-//    public String shoppingCart(ModelMap modelMap) {
-//        List<CartItem> productsForCurrentUser = cartItemService.findCartItemByUserId(userId);
-//
-//        modelMap.addAttribute("products");
-//        return "shoppingcart";
-//    }
-//
-//    @GetMapping("/shoppingCart/addProduct/{productId}")
-//    public String addProductToCart(@PathVariable Long productId) throws NoProductFoundException {
-//        cartItemService.addProduct(productService.findById(productId));
-//        return shoppingCart();
-//    }
-//
-//    @GetMapping("/shoppingCart/removeProduct/{productId}")
-//    public ModelAndView removeProductFromCart(@PathVariable("productId") Long productId) {
-//        productService.findById(productId).ifPresent(shoppingCartService::removeProduct);
+    @GetMapping("/shoppingCart")
+    public ModelAndView shoppingCart() {
+        ModelAndView modelAndView = new ModelAndView("/shoppingCart");
+        modelAndView.addObject("products", cartItemServiceImpl.getProductsInCart());
+        modelAndView.addObject("total", cartItemServiceImpl.getTotal().toString());
+        return modelAndView;
+    }
+
+
+    @GetMapping("/shoppingCart/addProduct/{productId}")
+    public ModelAndView addProductToCart(@PathVariable("productId") Long productId){
+        productServiceImpl.findById(productId).ifPresent(cartItemServiceImpl::addProduct);
+        return shoppingCart();
+    }
+
+    @GetMapping("/shoppingCart/removeProduct/{productId}")
+    public ModelAndView removeProductFromCart(@PathVariable("productId") Long productId){
+        productServiceImpl.findById(productId).ifPresent(cartItemServiceImpl::removeProduct);
+        return shoppingCart();
+    }
+
+//    @GetMapping("/shoppingCart/checkout")
+//    public ModelAndView checkout() {
+//        try {
+//            cartItemServiceImpl.checkout();
+//        } catch (NotEnoughProductsInStockException e) {
+//            return shoppingCart().addObject("outOfStockMessage", e.getMessage());
+//        }
 //        return shoppingCart();
 //    }
 }

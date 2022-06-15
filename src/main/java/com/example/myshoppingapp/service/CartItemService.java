@@ -1,28 +1,20 @@
 package com.example.myshoppingapp.service;
 
-import com.example.myshoppingapp.model.CartItem;
+import com.example.myshoppingapp.exception.NotEnoughProductsInStockException;
 import com.example.myshoppingapp.model.Product;
-import com.example.myshoppingapp.repository.CartItemRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.math.BigDecimal;
+import java.util.Map;
 
-@Service
-public class CartItemService {
+public interface CartItemService {
+    void addProduct(Product product);
 
-    CartItemRepository cartItemRepository;
+    void removeProduct(Product product);
 
-    @Autowired
-    public CartItemService(CartItemRepository cartItemRepository) {
-        this.cartItemRepository = cartItemRepository;
-    }
+    Map<Product, Integer> getProductsInCart();
 
-    public List<CartItem> findCartItemByUserId(Long userId) {
-        return cartItemRepository.findCartItemByUserId(userId);
-    }
+    void checkout() throws NotEnoughProductsInStockException;
 
-    public Product addProduct(Product product) {
-        return null;
-    }
+    BigDecimal getTotal();
+
 }
