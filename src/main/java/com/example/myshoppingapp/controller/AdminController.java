@@ -6,7 +6,6 @@ import com.example.myshoppingapp.model.Product;
 import com.example.myshoppingapp.model.User;
 import com.example.myshoppingapp.service.ProductService;
 import com.example.myshoppingapp.service.UserService;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -103,8 +102,6 @@ public class AdminController {
 
     @PostMapping("/users-administration/save")
     public String saveUser(User user, RedirectAttributes redirectAttributes) {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
-        user.setPassword(encoder.encode(user.getPassword()));
         userService.saveUser(user);
         redirectAttributes.addFlashAttribute("message", "User saved successfully !");
         return "redirect:/admin/users-administration";

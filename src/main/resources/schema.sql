@@ -6,13 +6,13 @@ CREATE TABLE `users` (
                          `id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
                          `first_name` VARCHAR(40) NOT NULL,
                          `last_name` VARCHAR(40) NOT NULL,
-                         `username` VARCHAR(40) NOT NULL,
+                         `username` VARCHAR(40) NOT NULL UNIQUE,
                          `email` VARCHAR(100) NOT NULL UNIQUE,
                          `password` VARCHAR(64) NOT NULL,
                          `address` VARCHAR(200) NOT NULL,
-                         `phone_number` VARCHAR(15) NOT NULL,
-                         `role` VARCHAR(15) NOT NULL,
-                         `enabled` TINYINT NOT NULL);
+                         `phone_number` VARCHAR(15) NOT NULL UNIQUE,
+                         `role` VARCHAR(15) NOT NULL DEFAULT 'ROLE_USER',
+                         `enabled` TINYINT NOT NULL DEFAULT 1);
 
 CREATE TABLE `products` (
                             `id` BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,

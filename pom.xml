@@ -52,10 +52,11 @@
             <optional>true</optional>
         </dependency>
 
+<!--    Do not update, our HTML files use CSS from current version    -->
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
-            <version>5.1.3</version>
+            <version>3.4.0</version>
         </dependency>
 
         <dependency>

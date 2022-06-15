@@ -1,19 +1,11 @@
 package com.example.myshoppingapp.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
-
-import javax.persistence.Entity;
-import javax.persistence.Table;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "users")
@@ -24,18 +16,30 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String lastName;
 
+    @Column(nullable = false)
     private String firstName;
 
+    @Column(nullable = false, unique = true)
     private String username;
+
+    @Column(nullable = false, unique = true)
     private String email;
 
+    @Column(nullable = false)
     private String password;
+
+    @Column(nullable = false)
     private String address;
+
+    @Column(nullable = false, unique = true)
     private String phoneNumber;
 
+    @Column(nullable = false, columnDefinition = "ROLE_USER")
     private String role;
 
+    @Column(nullable = false)
     private boolean enabled;
 }

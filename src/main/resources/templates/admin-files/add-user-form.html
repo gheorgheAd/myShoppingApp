@@ -7,7 +7,7 @@
     <title>[[${pageTitle}]]</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
     <style>
-     label {
+        label {
             display: inline-block;
             width: 150px;
             text-align: left;
@@ -17,9 +17,10 @@
 </head>
 <body>
 
-    <div th:replace="fragments/navbar :: navbar"></div>
+<div th:replace="fragments/navbar :: navbar"></div>
 
-    <div class="container-fluid text-center">
+<div class="container-fluid text-center">
+
     <div><h1>Add New User</h1></div>
 
     <form th:action="@{/admin/users-administration/save}" method="post" th:object="${user}">
@@ -35,11 +36,11 @@
                 </div>
                 <div>
                     <label>Username</label>
-                    <input type="text" th:field="*{username}">
+                    <input type="text" th:field="*{username}"/>
                 </div>
                 <div>
                     <label>Email</label>
-                    <input type="email" th:field="*{email}">
+                    <input type="email" th:field="*{email}"/>
                 </div>
                 <div>
                     <label>Password</label>
@@ -59,7 +60,7 @@
                 </div>
                 <div>
                     <label width="300px">Enabled</label>
-                    <input type="checkbox" th:field="*{enabled}">
+                    <input type="checkbox" th:field="*{enabled}"/>
                 </div>
                 <div>
                     <button type="submit" class="btn btn-primary">Save</button>

@@ -1,47 +1,88 @@
+
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <div class="navbar navbar-inverse navbar-default.navbar-static-top" th:fragment="navbar">
+
     <div class="container">
+
+        <div class="navbar-header">
+            <a th:href="@{/products}">
+                <img width="50px" th:src="@{images/DXQquAwVoAAA28c.png}"/>
+            </a>
+        </div>
+
         <div class="navbar-header" sec:authorize="hasRole('ADMIN')">
             <a class="navbar-brand" th:href="@{/admin}">Administration Panel</a>
         </div>
+
         <div class="navbar-header" sec:authorize="hasRole('USER')">
-            <a class="navbar-brand" th:href="@{/products}">Best Coffee Selections</a>
+            <a class="navbar-brand" th:href="@{/products}">CatBucks Coffee</a>
         </div>
+
         <div class="navbar-collapse collapse">
+
             <ul class="nav navbar-nav navbar-left" sec:authorize="hasRole('ADMIN')">
-                <li th:classappend="${module == 'home' ? 'active' : ''}">
+
+                <li>
                     <a href="/admin" th:href="@{/admin}">
                         <span class="glyphicon glyphicon-home"></span>  Admin Home
                     </a>
                 </li>
+
             </ul>
+
             <ul class="nav navbar-nav">
-                <li th:classappend="${module == 'home' ? 'active' : ''}">
+
+                <li>
                     <a th:href="@{/}">
                         <span class="glyphicon glyphicon-home"></span>  Home
                     </a>
                 </li>
-                <li th:classappend="${module == 'tasks' ? 'active' : ''}" sec:authorize="hasRole('USER')">
-                    <a href="#" th:href="@{/cart}">Cart</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li th:classappend="${module == 'tasks' ? 'active' : ''}" sec:authorize="isAuthenticated()">
-                    <a href="#">Logged as '[[${#httpServletRequest.remoteUser}]]'</a>
-                </li>
-                <li sec:authorize="!isAuthenticated()">
-                    <a href="/login" th:href="@{/login}">
-                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Sign in
+
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/cart}">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>  Cart
                     </a>
                 </li>
+
+                <li>
+                    <a th:href="@{/contact}">
+                        <span class="glyphicon glyphicon-earphone"></span>  Contact
+                    </a>
+                </li>
+
+                <li>
+                    <a th:href="@{/about}">
+                        <span class="glyphicon glyphicon glyphicon-list-alt"></span>  About
+                    </a>
+                </li>
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
                 <li sec:authorize="isAuthenticated()">
-                    <a th:href="@{/logout}" onclick="$('#form').submit();">
+                    <a th:href="@{/profile}">Logged as '[[${#httpServletRequest.remoteUser}]]'</a>
+                </li>
+
+                <li sec:authorize="!isAuthenticated()">
+                    <a href="/login" th:href="@{/login}">
+                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Login
+                    </a>
+                </li>
+
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/logout}">
                         <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
                     </a>
                 </li>
+
             </ul>
+
         </div>
+
     </div>
+
 </div>

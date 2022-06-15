@@ -27,6 +27,7 @@ public class LoginController {
     public String logout() {
         return "logout";
     }
+
     @GetMapping("/register")
     public String addUser(ModelMap modelMap) {
         modelMap.addAttribute("newUser", new User());
@@ -36,6 +37,6 @@ public class LoginController {
     @PostMapping("/register/save")
     public String saveUser(User user) {
         userService.saveUser(user);
-        return "successful-registration-message";
+        return "redirect:/successful-registration-message";
     }
 }

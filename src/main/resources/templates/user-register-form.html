@@ -1,16 +1,13 @@
-<!DOCTYPE html>
+
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns: sec="//www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
 <head>
     <meta charset="UTF-8">
-    <title>[[${pageTitle}]]</title>
+    <title>Registration Page</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
     <style>
-        div {
-            margin-bottom: 15px;
-        }
-
         label {
             display: inline-block;
             width: 150px;
@@ -18,12 +15,16 @@
         }
     </style>
 </head>
+
 <body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
 <div class="container-fluid text-center">
+
     <div><h1>Please fill in this form to create an account</h1></div>
 
     <form th:action="@{/register/save}" method="post" th:object="${newUser}">
-        <input type="hidden" th:field="*{id}">
         <fieldset>
             <div>
                 <div>
@@ -35,21 +36,26 @@
                     <input type="text" th:field="*{lastName}"/>
                 </div>
                 <div>
+                    <label>Username</label>
+                    <input type="text" th:field="*{username}"/>
+                </div>
+                <div>
                     <label>Email</label>
-                    <input type="email" th:field="*{email}">
+                    <input type="email" th:field="*{email}"/>
                 </div>
                 <div>
                     <label>Password</label>
                     <input type="password" th:field="*{password}"/>
                 </div>
                 <div>
-                    <label>Phone Number</label>
-                    <input type="text" th:field="*{phoneNumber}"/>
-                </div>
-                <div>
                     <label>Address</label>
                     <input type="text" th:field="*{address}"/>
                 </div>
+                <div>
+                    <label>Phone Number</label>
+                    <input type="text" th:field="*{phoneNumber}"/>
+                </div>
+
                 <div>
                     <button type="submit" class="btn btn-primary">Register</button>
                     <button onclick="cancelForm()"
@@ -59,9 +65,9 @@
                 </div>
             </div>
         </fieldset>
-        <div class="container signin">
-            <p>
-                Already have an account?
+
+        <div class="container">
+            <p>Already have an account?
                 <a class="h6" th:href="@{/login}">Sign In</a>
             </p>
         </div>
