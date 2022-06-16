@@ -1,59 +1,32 @@
 package com.example.myshoppingapp.controller;
 
+import com.example.myshoppingapp.controller.dto.FinishPurchaseRequest;
+import com.example.myshoppingapp.controller.dto.FinishPurchaseResponse;
 import com.example.myshoppingapp.service.CartItemServiceImpl;
-import com.example.myshoppingapp.service.ProductServiceImpl;
-import com.example.myshoppingapp.service.UserServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import javax.validation.Valid;
 
 @Controller
+@Slf4j
 public class ShoppingCartController {
 
-    UserServiceImpl userServiceImpl;
     CartItemServiceImpl cartItemServiceImpl;
-    ProductServiceImpl productServiceImpl;
 
     @Autowired
-    public ShoppingCartController(
-            UserServiceImpl userServiceImpl,
-            CartItemServiceImpl cartItemServiceImpl,
-            ProductServiceImpl productServiceImpl) {
-        this.userServiceImpl = userServiceImpl;
+    public ShoppingCartController(CartItemServiceImpl cartItemServiceImpl) {
         this.cartItemServiceImpl = cartItemServiceImpl;
-        this.productServiceImpl = productServiceImpl;
     }
 
-    @GetMapping("/shoppingCart")
-    public ModelAndView shoppingCart() {
-        ModelAndView modelAndView = new ModelAndView("/shoppingCart");
-        modelAndView.addObject("products", cartItemServiceImpl.getProductsInCart());
-        modelAndView.addObject("total", cartItemServiceImpl.getTotal().toString());
-        return modelAndView;
+    @PostMapping("/finishPurchase")
+    public ResponseEntity finishPurchase(@Valid @RequestBody FinishPurchaseRequest request) {
+        log.info("handling finish purchase request: {}", request);
+        Integer orderId = cartItemServiceImpl.finishPurchase(request);
+        return ResponseEntity.ok(new FinishPurchaseResponse(orderId));
     }
-
-
-    @GetMapping("/shoppingCart/addProduct/{productId}")
-    public ModelAndView addProductToCart(@PathVariable("productId") Long productId){
-        productServiceImpl.findById(productId).ifPresent(cartItemServiceImpl::addProduct);
-        return shoppingCart();
-    }
-
-    @GetMapping("/shoppingCart/removeProduct/{productId}")
-    public ModelAndView removeProductFromCart(@PathVariable("productId") Long productId){
-        productServiceImpl.findById(productId).ifPresent(cartItemServiceImpl::removeProduct);
-        return shoppingCart();
-    }
-
-//    @GetMapping("/shoppingCart/checkout")
-//    public ModelAndView checkout() {
-//        try {
-//            cartItemServiceImpl.checkout();
-//        } catch (NotEnoughProductsInStockException e) {
-//            return shoppingCart().addObject("outOfStockMessage", e.getMessage());
-//        }
-//        return shoppingCart();
-//    }
 }

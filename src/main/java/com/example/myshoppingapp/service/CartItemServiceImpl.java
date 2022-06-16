@@ -1,79 +1,70 @@
 package com.example.myshoppingapp.service;
 
+import com.example.myshoppingapp.controller.dto.FinishPurchaseRequest;
 import com.example.myshoppingapp.model.CartItem;
+import com.example.myshoppingapp.model.Order;
 import com.example.myshoppingapp.model.Product;
+import com.example.myshoppingapp.model.User;
 import com.example.myshoppingapp.repository.CartItemRepository;
-import com.example.myshoppingapp.repository.ProductRepository;
+import com.example.myshoppingapp.repository.OrderRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
-import org.springframework.web.context.WebApplicationContext;
 
-import javax.transaction.Transactional;
-import java.math.BigDecimal;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service
-@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
-@Transactional
-public class CartItemServiceImpl {
+@Slf4j
+public class CartItemServiceImpl implements CartItemService {
 
-    CartItemRepository cartItemRepository;
+    private final CartItemRepository cartItemRepository;
+    private final UserServiceImpl userService;
+    private final OrderRepository orderRepository;
+    private final ProductServiceImpl productService;
 
-    private ProductRepository productRepository;
-
-    private Map<Product, Integer> products = new HashMap<>();
 
     @Autowired
-    public CartItemServiceImpl(CartItemRepository cartItemRepository, ProductRepository productRepository) {
+    public CartItemServiceImpl(CartItemRepository cartItemRepository, UserServiceImpl userService, OrderRepository orderRepository, ProductServiceImpl productService) {
         this.cartItemRepository = cartItemRepository;
-        this.productRepository = productRepository;
+        this.userService = userService;
+        this.orderRepository = orderRepository;
+        this.productService = productService;
     }
 
-    public List<CartItem> findCartItemByUserId(Long userId) {
-        return cartItemRepository.findCartItemByUserId(userId);
-    }
+    @Override
+    public Integer finishPurchase(FinishPurchaseRequest request) {
+        log.info("creating order entity from request: {}", request);
+        Order orderEntity = new Order();
+        User userEntity = userService.findByEmail(request.getEmail());
+        orderEntity.setUser(userEntity);
+        orderEntity = orderRepository.save(orderEntity);
+        Map<Integer, Integer> productIdProductCount = getProductIdProductCountMap(request);
 
-    public void addProduct(Product product) {
-        if (products.containsKey(product)) {
-            products.replace(product, products.get(product) + 1);
-        } else {
-            products.put(product, 1);
+        for (Map.Entry<Integer, Integer> entry : productIdProductCount.entrySet()) {
+            Integer k = entry.getKey();
+            Integer q = entry.getValue();
+            Product productEntity = productService.findById(k);
+            CartItem cartItem = new CartItem();
+            cartItem.setProduct(productEntity);
+            cartItem.setQuantity(q);
+            cartItem.setUser(userEntity);
+            cartItemRepository.save(cartItem);
         }
+       return orderEntity.getId();
     }
-    public void removeProduct(Product product) {
-        if (products.containsKey(product)) {
-            if (products.get(product) > 1)
-                products.replace(product, products.get(product) - 1);
-            else if (products.get(product) == 1) {
-                products.remove(product);
+
+    private Map<Integer, Integer> getProductIdProductCountMap(FinishPurchaseRequest request) {
+        Map<Integer, Integer> productIdProductCount = new HashMap<>();
+        request.getProductIds().forEach(it -> {
+            if (productIdProductCount.containsKey(it.getId())) {
+                Integer productCount = productIdProductCount.get(it.getId());
+                productCount = productCount + 1;
+                productIdProductCount.put(it.getId(), productCount);
+            } else {
+                productIdProductCount.put(it.getId(), 1);
             }
-        }
-    }
-    public Map<Product, Integer> getProductsInCart() {
-        return Collections.unmodifiableMap(products);
-    }
-//    public void checkout() throws NotEnoughProductsInStockException {
-//        Product product = null;
-//        for (Map.Entry<Product, Integer> entry : products.entrySet()) {
-//            // Refresh quantity for every product before checking
-//            product = productRepository.findOne(product,product.getId());
-//            if (product.getQuantity() < entry.getValue())
-//                throw new NotEnoughProductsInStockException(product);
-//            entry.getKey().setQuantity(product.getQuantity() - entry.getValue());
-//        }
-//        productRepository.save(products.keySet());
-//        productRepository.flush();
-//        products.clear();
-//    }
-    public BigDecimal getTotal() {
-        return products.entrySet().stream()
-                .map(entry -> entry.getKey().getPrice().multiply(BigDecimal.valueOf(entry.getValue())))
-                .reduce(BigDecimal::add)
-                .orElse(BigDecimal.ZERO);
+        });
+        return productIdProductCount;
     }
 }

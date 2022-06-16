@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping(value = "/admin")
@@ -56,8 +55,8 @@ public class AdminController {
     }
 
     @GetMapping("/products-administration/edit/{id}")
-    public String editProduct(@PathVariable Long id, ModelMap modelMap, RedirectAttributes redirectAttributes) {
-            Optional<Product> product = productServiceImpl.findById(id);
+    public String editProduct(@PathVariable Integer id, ModelMap modelMap, RedirectAttributes redirectAttributes) {
+            Product product = productServiceImpl.findById(id);
             modelMap.addAttribute(product);
             modelMap.addAttribute("pageTitleMessage", "Edit product (ID " + id + ")");
             redirectAttributes.addFlashAttribute("message", "Product successfully updated !");
@@ -72,7 +71,7 @@ public class AdminController {
     }
 
     @GetMapping("/products-administration/delete/{id}")
-    public String deleteProductById(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+    public String deleteProductById(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
         try {
             productServiceImpl.deleteById(id);
             redirectAttributes.addFlashAttribute("message", "Product successfully deleted !");
@@ -104,7 +103,7 @@ public class AdminController {
     }
 
     @GetMapping("/users-administration/edit/{id}")
-    public String editUser(@PathVariable Long id, ModelMap modelMap, RedirectAttributes redirectAttributes) {
+    public String editUser(@PathVariable Integer id, ModelMap modelMap, RedirectAttributes redirectAttributes) {
         try {
             User user = userServiceImpl.findById(id);
             modelMap.addAttribute(user);
@@ -127,7 +126,7 @@ public class AdminController {
     }
 
     @GetMapping("/users-administration/delete/{id}")
-    public String deleteUserById(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+    public String deleteUserById(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
         try {
             userServiceImpl.deleteById(id);
             redirectAttributes.addFlashAttribute("message", "User successfully deleted !");

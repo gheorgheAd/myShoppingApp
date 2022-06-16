@@ -1,19 +1,18 @@
 package com.example.myshoppingapp.model;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.math.BigDecimal;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
 @Table(name = "products")
-public class Product {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Product extends BaseEntity {
 
     private String title;
 
@@ -21,22 +20,8 @@ public class Product {
 
     private String image;
 
-    private BigDecimal price;
-
-    private Integer quantity;
+    private Float price;
 
     private String producer;
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        Product product = (Product) o;
-
-        return id.equals(product.id);
-    }
-    @Override
-    public int hashCode() {
-        return id.hashCode();
-    }
 }

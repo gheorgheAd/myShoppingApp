@@ -41,7 +41,9 @@
                             <a th:href="@{/products/} + ${product.id}">
                                 <button type="submit" class="btn btn-primary">More</button>
                             </a>
+                            <a th:href="@{/shoppingcart} + ${product.id}">
                             <button type="submit" class="btn btn-primary" onclick="addToCart()">Add To Cart</button>
+                            </a>
                         </div>
                     </td>
                 </tr>

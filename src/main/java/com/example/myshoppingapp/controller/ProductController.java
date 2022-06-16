@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/products")
@@ -29,8 +28,8 @@ public class ProductController {
 
     @GetMapping("/{id}")
     @SneakyThrows
-    public String showProductById(@PathVariable Long id, ModelMap modelMap) {
-        Optional<Product> product = service.findById(id);
+    public String showProductById(@PathVariable Integer id, ModelMap modelMap) {
+        Product product = service.findById(id);
         modelMap.addAttribute("productById", product);
         return "product-description";
     }
