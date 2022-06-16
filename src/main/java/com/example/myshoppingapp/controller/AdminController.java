@@ -6,6 +6,7 @@ import com.example.myshoppingapp.model.Product;
 import com.example.myshoppingapp.model.User;
 import com.example.myshoppingapp.service.ProductService;
 import com.example.myshoppingapp.service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -19,14 +20,11 @@ import java.util.List;
 
 @Controller
 @RequestMapping(value = "/admin")
+@AllArgsConstructor
 public class AdminController {
-    private ProductService productService;
-    private UserService userService;
 
-    public AdminController(ProductService productService, UserService userService) {
-        this.productService = productService;
-        this.userService = userService;
-    }
+    private final ProductService productService;
+    private final UserService userService;
 
     @GetMapping
     public String adminInterface() {
@@ -49,7 +47,7 @@ public class AdminController {
 
     @PostMapping("/products-administration/save")
     public String saveProduct(Product product, RedirectAttributes redirectAttributes) {
-        productService.addProduct(product);
+        productService.save(product);
         redirectAttributes.addFlashAttribute("message", "Product saved successfully !");
         return "redirect:/admin/products-administration";
     }
@@ -70,7 +68,7 @@ public class AdminController {
 
     @PostMapping("/products-administration/update")
     public String updateProduct(Product product, RedirectAttributes redirectAttributes) {
-        productService.addProduct(product);
+        productService.save(product);
         redirectAttributes.addFlashAttribute("message", "Product updated successfully !");
         return "redirect:/admin/products-administration";
     }
@@ -102,7 +100,7 @@ public class AdminController {
 
     @PostMapping("/users-administration/save")
     public String saveUser(User user, RedirectAttributes redirectAttributes) {
-        userService.saveUser(user);
+        userService.save(user);
         redirectAttributes.addFlashAttribute("message", "User saved successfully !");
         return "redirect:/admin/users-administration";
     }
@@ -123,9 +121,7 @@ public class AdminController {
 
     @PostMapping("/users-administration/update")
     public String updateUser(User user, RedirectAttributes redirectAttributes) {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
-        user.setPassword(encoder.encode(user.getPassword()));
-        userService.saveUser(user);
+        userService.save(user);
         redirectAttributes.addFlashAttribute("message", "User updated successfully !");
         return "redirect:/admin/users-administration";
     }

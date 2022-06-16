@@ -18,7 +18,7 @@ public class Order {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    private Float total_price;
+    private Float totalPrice;
 
     private Date date;
 

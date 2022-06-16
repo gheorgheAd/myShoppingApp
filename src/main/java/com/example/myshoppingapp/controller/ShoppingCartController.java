@@ -3,24 +3,23 @@ package com.example.myshoppingapp.controller;
 import com.example.myshoppingapp.service.CartItemService;
 import com.example.myshoppingapp.service.ProductService;
 import com.example.myshoppingapp.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/cart")
+@AllArgsConstructor
 public class ShoppingCartController {
 
-    UserService userService;
-    CartItemService cartItemService;
-    ProductService productService;
+    private UserService userService;
+    private CartItemService cartItemService;
+    private ProductService productService;
 
-    @Autowired
-    public ShoppingCartController(
-            UserService userService,
-            CartItemService cartItemService,
-            ProductService productService){
-        this.userService = userService;
-        this.cartItemService = cartItemService;
-        this.productService = productService;
+    @GetMapping
+    public String showCartPage() {
+        return "shoppingcart";
     }
 
 //    @GetMapping("/shoppingCart")

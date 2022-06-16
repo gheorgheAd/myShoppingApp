@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ProductController {
 
-    private ProductService service;
+    private final ProductService service;
 
     @GetMapping
     public String showProducts(ModelMap modelMap) {
