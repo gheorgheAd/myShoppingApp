@@ -15,71 +15,50 @@
             width: 150px;
             text-align: left;
         }
-
     </style>
 </head>
-
 <body>
 
 <div th:replace="fragments/navbar :: navbar"></div>
 
 <div class="container-fluid text-center">
 
-    <div><h1>Add New User</h1></div>
+    <div><h1>Edit Your Profile</h1></div>
 
-    <form th:action="@{/admin/users-administration/save}" method="post" th:object="${user}">
+    <form th:action="@{/profile/update}" method="post" th:object="${user}">
+
+        <input type="hidden" th:field="*{id}"/>
+        <input type="hidden" th:field="*{firstName}"/>
+        <input type="hidden" th:field="*{lastName}"/>
+        <input type="hidden" th:field="*{role}"/>
+        <input type="hidden" th:field="*{enabled}"/>
 
         <fieldset>
-
             <div>
 
                 <div>
-                    <label>First Name</label>
-                    <input type="text" th:field="*{firstName}"/>
-                </div>
-
-                <div>
-                    <label>Last Name</label>
-                    <input type="text" th:field="*{lastName}"/>
-                </div>
-
-                <div>
                     <label>Username</label>
-                    <input type="text" th:field="*{username}"/>
+                    <input type="text" th:field="*{username}">
                 </div>
-
                 <div>
                     <label>Email</label>
-                    <input type="email" th:field="*{email}"/>
+                    <input type="email" th:field="*{email}">
                 </div>
-
                 <div>
                     <label>Password</label>
                     <input type="password" th:field="*{password}"/>
                 </div>
-
                 <div>
                     <label>Address</label>
                     <input type="text" th:field="*{address}"/>
                 </div>
-
                 <div>
                     <label>Phone Number</label>
                     <input type="text" th:field="*{phoneNumber}"/>
                 </div>
 
                 <div>
-                    <label>Role</label>
-                    <input type="text" th:field="*{role}"/>
-                </div>
-
-                <div>
-                    <label width="300px">Enabled</label>
-                    <input type="checkbox" th:field="*{enabled}"/>
-                </div>
-
-                <div>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary">Update Profile</button>
                     <button onclick="cancelForm()"
                             type="button"
                             class="btn btn-primary">Cancel
@@ -93,11 +72,13 @@
     </form>
 
 </div>
+
 <script type="text/javascript">
     function cancelForm() {
-        window.location = "/admin/users-administration";
+        window.location = "/";
     }
-
 </script>
+
 </body>
+
 </html>

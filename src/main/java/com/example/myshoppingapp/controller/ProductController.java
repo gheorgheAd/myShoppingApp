@@ -1,7 +1,7 @@
 package com.example.myshoppingapp.controller;
 
 import com.example.myshoppingapp.model.Product;
-import com.example.myshoppingapp.service.ProductServiceImpl;
+import com.example.myshoppingapp.service.ProductService;
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Controller;
@@ -17,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 public class ProductController {
 
-    private ProductServiceImpl service;
+    private final ProductService service;
 
     @GetMapping
     public String showProducts(ModelMap modelMap) {

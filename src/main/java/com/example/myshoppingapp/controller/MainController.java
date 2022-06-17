@@ -12,4 +12,20 @@ public class MainController {
     public String showHomePage() {
         return "home";
     }
+
+    @GetMapping("/about")
+    public String showAboutPage() {
+        return "about";
+    }
+
+    @GetMapping("/contact")
+    public String showContactPage() {
+        return "contact";
+    }
+
+    @GetMapping("/checkout")
+    public String showCheckoutPage() {
+        return "checkout";
+    }
+
 }

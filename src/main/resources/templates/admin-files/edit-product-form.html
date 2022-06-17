@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
+
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns: sec="//www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+
 <head>
   <meta charset="UTF-8">
   <title>[[${pageTitle}]]</title>
   <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
   <style>
-       label {
-            display: inline-block;
-            width: 150px;
-            text-align: left;
-        }
-    </style>
+    label {
+      display: inline-block;
+      width: 150px;
+      text-align: left;
+    }
+
+  </style>
 </head>
 <body>
 
@@ -20,31 +25,41 @@
 
 <div class="container-fluid text-center">
 
-  <div><h1>[[${editPageTitle}]]</h1></div>
+  <div><h1>[[${pageTitleMessage}]]</h1></div>
 
-  <form th:action="@{admin/products-administration/update}" method="post" th:object="${product}">
+  <form th:action="@{/admin/products-administration/update}" method="post" th:object="${product}">
     <input type="hidden" th:field="*{id}">
     <fieldset>
       <div>
         <div>
           <label>Title</label>
-          <input type="text" th:field="*{title}"/>
+          <label>
+            <input type="text" th:field="*{title}"/>
+          </label>
         </div>
         <div>
           <label>Description</label>
-          <input type="text" th:field="*{description}"/>
+          <label>
+            <input type="text" th:field="*{description}"/>
+          </label>
         </div>
         <div>
           <label>Image Link</label>
-          <input type="text" th:field="*{image}"/>
+          <label>
+            <input type="text" th:field="*{image}"/>
+          </label>
         </div>
         <div>
           <label>Price</label>
-          <input type="number" th:field="*{price}"/>
+          <label>
+            <input type="number" th:field="*{price}"/>
+          </label>
         </div>
         <div>
           <label>Producer</label>
-          <input type="text" th:field="*{producer}"/>
+          <label>
+            <input type="text" th:field="*{producer}"/>
+          </label>
         </div>
         <div>
           <button type="submit" class="btn btn-primary">Update</button>
@@ -59,9 +74,10 @@
 
 </div>
 <script type="text/javascript">
-    function cancelForm() {
-        window.location = "/admin/products-administration";
-    }
+  function cancelForm() {
+    window.location = "/admin/products-administration";
+  }
+
 </script>
 </body>
 </html>

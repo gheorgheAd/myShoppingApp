@@ -3,7 +3,7 @@ package com.example.myshoppingapp.service;
 import com.example.myshoppingapp.exception.NoUserFoundException;
 import com.example.myshoppingapp.model.User;
 import com.example.myshoppingapp.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -11,18 +11,26 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl {
+@AllArgsConstructor
+public class UserService {
 
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 
-    @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    public User saveUser(User user) {
+    public User save(User user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
-        user.setPassword(encoder.encode(user.getPassword()));
+
+        if(!user.getPassword().startsWith("$2a$12")) {
+            user.setPassword(encoder.encode(user.getPassword()));
+        }
+
+        if(user.getRole() == null) {
+            user.setRole("ROLE_USER");
+        }
+
+        if(!user.isEnabled()) {
+            user.setEnabled(true);
+        }
+
         return userRepository.save(user);
     }
 
@@ -46,5 +54,9 @@ public class UserServiceImpl {
     }
     public List<User> findAll() {
         return userRepository.findAll();
+    }
+
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username);
     }
 }

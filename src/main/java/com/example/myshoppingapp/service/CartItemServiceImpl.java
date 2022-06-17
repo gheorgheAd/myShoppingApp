@@ -7,8 +7,8 @@ import com.example.myshoppingapp.model.Product;
 import com.example.myshoppingapp.model.User;
 import com.example.myshoppingapp.repository.CartItemRepository;
 import com.example.myshoppingapp.repository.OrderRepository;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -16,21 +16,14 @@ import java.util.Map;
 
 @Service
 @Slf4j
+@AllArgsConstructor
 public class CartItemServiceImpl implements CartItemService {
 
     private final CartItemRepository cartItemRepository;
-    private final UserServiceImpl userService;
+    private final UserService userService;
     private final OrderRepository orderRepository;
-    private final ProductServiceImpl productService;
+    private final ProductService productService;
 
-
-    @Autowired
-    public CartItemServiceImpl(CartItemRepository cartItemRepository, UserServiceImpl userService, OrderRepository orderRepository, ProductServiceImpl productService) {
-        this.cartItemRepository = cartItemRepository;
-        this.userService = userService;
-        this.orderRepository = orderRepository;
-        this.productService = productService;
-    }
 
     @Override
     public Integer finishPurchase(FinishPurchaseRequest request) {

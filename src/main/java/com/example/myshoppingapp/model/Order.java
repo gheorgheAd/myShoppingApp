@@ -17,7 +17,7 @@ import java.util.Date;
 @Table(name = "orders")
 public class Order extends BaseEntity {
 
-    private Float total_price;
+    private Float totalPrice;
 
     private Date date;
 
