@@ -42,12 +42,6 @@
                     </a>
                 </li>
 
-<!--                <li sec:authorize="isAuthenticated()">-->
-<!--                    <a th:href="@{/cart}">-->
-<!--                        <span class="glyphicon glyphicon-shopping-cart"></span>  Cart-->
-<!--                    </a>-->
-<!--                </li>-->
-
                 <li>
                     <a th:href="@{/contact}">
                         <span class="glyphicon glyphicon-earphone"></span>  Contact
@@ -80,8 +74,8 @@
                     </a>
                 </li>
 
-                <li>
-                    <a th:href="@{/shoppingcart}">
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/cart}">
                         <span class="glyphicon glyphicon-shopping-cart"></span>Cart
                     </a>
                 </li>
