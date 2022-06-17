@@ -20,7 +20,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 public class ProductRepositoryTest {
 
     @Autowired
-    private ProductRepository productRepository;
+    private ProductRepository productRepositoryUnderTest;
     private Product product;
 
     @BeforeEach
@@ -37,10 +37,10 @@ public class ProductRepositoryTest {
     @Test
     public void findAllProductsTest() {
         // given
-        productRepository.save(product);
+        productRepositoryUnderTest.save(product);
 
         // when
-        Iterable<Product> products = productRepository.findAll();
+        Iterable<Product> products = productRepositoryUnderTest.findAll();
 
         // then
         assertThat(products).isNotNull();
@@ -49,10 +49,10 @@ public class ProductRepositoryTest {
     @Test
     public void canFindProductById() {
         // given
-        productRepository.save(product);
+        productRepositoryUnderTest.save(product);
 
         // when
-        Optional<Product> productById = productRepository.findById(product.getId());
+        Optional<Product> productById = productRepositoryUnderTest.findById(product.getId());
 
         // then
         assertThat(productById).isPresent();
@@ -61,7 +61,7 @@ public class ProductRepositoryTest {
     @Test
     public void canAddProduct() {
         //when
-        Product savedProduct = productRepository.save(product);
+        Product savedProduct = productRepositoryUnderTest.save(product);
 
         //then
         assertThat(savedProduct).isNotNull();
@@ -71,13 +71,13 @@ public class ProductRepositoryTest {
     @Test
     public void deleteUserByIdTest() {
         // given
-        productRepository.save(product);
+        productRepositoryUnderTest.save(product);
 
         // when
-        productRepository.deleteById(product.getId());
+        productRepositoryUnderTest.deleteById(product.getId());
 
         // then
-        assertThat(productRepository.findById(product.getId())).isEmpty();
+        assertThat(productRepositoryUnderTest.findById(product.getId())).isEmpty();
     }
 
 }
