@@ -7,7 +7,6 @@ import com.example.myshoppingapp.model.User;
 import com.example.myshoppingapp.service.ProductService;
 import com.example.myshoppingapp.service.UserService;
 import lombok.AllArgsConstructor;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,17 +52,12 @@ public class AdminController {
     }
 
     @GetMapping("/products-administration/edit/{id}")
-    public String editProduct(@PathVariable Long id, ModelMap modelMap, RedirectAttributes redirectAttributes) {
-        try {
+    public String editProduct(@PathVariable Integer id, ModelMap modelMap, RedirectAttributes redirectAttributes) {
             Product product = productService.findById(id);
             modelMap.addAttribute(product);
             modelMap.addAttribute("pageTitleMessage", "Edit product (ID " + id + ")");
             redirectAttributes.addFlashAttribute("message", "Product successfully updated !");
             return "admin-files/edit-product-form";
-        } catch (NoProductFoundException exception) {
-            redirectAttributes.addFlashAttribute("message", exception.getMessage());
-        }
-        return "redirect:/admin/products-administration";
     }
 
     @PostMapping("/products-administration/update")
@@ -74,7 +68,7 @@ public class AdminController {
     }
 
     @GetMapping("/products-administration/delete/{id}")
-    public String deleteProductById(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+    public String deleteProductById(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
         try {
             productService.deleteById(id);
             redirectAttributes.addFlashAttribute("message", "Product successfully deleted !");
@@ -106,7 +100,7 @@ public class AdminController {
     }
 
     @GetMapping("/users-administration/edit/{id}")
-    public String editUser(@PathVariable Long id, ModelMap modelMap, RedirectAttributes redirectAttributes) {
+    public String editUser(@PathVariable Integer id, ModelMap modelMap, RedirectAttributes redirectAttributes) {
         try {
             User user = userService.findById(id);
             modelMap.addAttribute(user);
@@ -127,7 +121,7 @@ public class AdminController {
     }
 
     @GetMapping("/users-administration/delete/{id}")
-    public String deleteUserById(@PathVariable Long id, RedirectAttributes redirectAttributes) {
+    public String deleteUserById(@PathVariable Integer id, RedirectAttributes redirectAttributes) {
         try {
             userService.deleteById(id);
             redirectAttributes.addFlashAttribute("message", "User successfully deleted !");

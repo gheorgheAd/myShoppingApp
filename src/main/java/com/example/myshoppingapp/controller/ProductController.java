@@ -28,7 +28,7 @@ public class ProductController {
 
     @GetMapping("/{id}")
     @SneakyThrows
-    public String showProductById(@PathVariable Long id, ModelMap modelMap) {
+    public String showProductById(@PathVariable Integer id, ModelMap modelMap) {
         Product product = service.findById(id);
         modelMap.addAttribute("productById", product);
         return "product-description";

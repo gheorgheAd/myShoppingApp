@@ -42,11 +42,11 @@
                     </a>
                 </li>
 
-                <li sec:authorize="isAuthenticated()">
-                    <a th:href="@{/cart}">
-                        <span class="glyphicon glyphicon-shopping-cart"></span>  Cart
-                    </a>
-                </li>
+<!--                <li sec:authorize="isAuthenticated()">-->
+<!--                    <a th:href="@{/cart}">-->
+<!--                        <span class="glyphicon glyphicon-shopping-cart"></span>  Cart-->
+<!--                    </a>-->
+<!--                </li>-->
 
                 <li>
                     <a th:href="@{/contact}">
@@ -77,6 +77,12 @@
                 <li sec:authorize="isAuthenticated()">
                     <a th:href="@{/logout}">
                         <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
+                    </a>
+                </li>
+
+                <li>
+                    <a th:href="@{/shoppingcart}">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>Cart
                     </a>
                 </li>
 

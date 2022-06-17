@@ -3,6 +3,7 @@ package com.example.myshoppingapp.service;
 import com.example.myshoppingapp.exception.NoProductFoundException;
 import com.example.myshoppingapp.model.Product;
 import com.example.myshoppingapp.repository.ProductRepository;
+import lombok.SneakyThrows;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -19,19 +20,17 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public Product findById(Long id) throws NoProductFoundException {
-        Optional<Product> optionalProduct = productRepository.findById(id);
-        if (optionalProduct.isEmpty()) {
-            throw new NoProductFoundException("Product not found!");
-        }
-        return optionalProduct.get();
+    @SneakyThrows
+    public Product findById(Integer id) {
+        return productRepository.findById(id)
+                .orElseThrow(() -> new NoProductFoundException("Product not found"));
     }
 
     public Product save(Product product) {
         return productRepository.save(product);
     }
 
-    public void deleteById(Long id) throws NoProductFoundException {
+    public void deleteById(Integer id) throws NoProductFoundException {
         Optional<Product> optionalProduct = productRepository.findById(id);
         if (optionalProduct.isEmpty()) {
             throw new NoProductFoundException("Product not found!");
