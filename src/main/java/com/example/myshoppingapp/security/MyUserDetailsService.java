@@ -1,4 +1,4 @@
-package com.example.myshoppingapp.service.security;
+package com.example.myshoppingapp.security;
 
 import com.example.myshoppingapp.model.User;
 import com.example.myshoppingapp.repository.UserRepository;
@@ -17,4 +17,5 @@ public class MyUserDetailsService implements UserDetailsService {
         User user = userRepository.findByUsername(username);
         return new MyUserDetails(user);
     }
+
 }

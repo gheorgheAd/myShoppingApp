@@ -16,6 +16,10 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
     public User save(User user) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
 
@@ -49,14 +53,13 @@ public class UserService {
         }
         userRepository.deleteById(id);
     }
+
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
-    }
-    public List<User> findAll() {
-        return userRepository.findAll();
     }
 
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
 }
