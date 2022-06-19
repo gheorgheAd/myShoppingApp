@@ -5,7 +5,6 @@ import com.example.myshoppingapp.repository.CartItemRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +20,11 @@ public class CartController {
         this.cartItemRepository = itemRepository;
     }
 
+    @GetMapping
+    public String showCartPage() {
+        return "cart";
+    }
+
     @PostMapping("/items")
     ResponseEntity<CartItem> addItem(@RequestBody CartItem itemToAdd) {
         // check if product P for userId U already exists
@@ -28,12 +32,7 @@ public class CartController {
         // if no -> add the item to cart
         return ResponseEntity.ok(cartItemRepository.save(itemToAdd));
     }
-    @GetMapping("/products-administration/add")
-    public String addToCart(ModelMap modelMap) {
-        modelMap.addAttribute("cartItem", new CartItem());
-        modelMap.addAttribute("pageTitleMessage", "Add Product In Shop");
-        return "/admin-files/add-product-form";
-    }
+
     @GetMapping("/{userId}")
     ResponseEntity<List<CartItem>> getUserItems(@PathVariable Integer userId) {
         return ResponseEntity.ok(cartItemRepository.findCartItemByUserId(userId));
