@@ -3,7 +3,7 @@
 <html lang="en"
       xmlns:th="http://thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns: sec="//www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+      xmlns: sec="//www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,6 @@
           th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}">
     <link rel="stylesheet" type="text/css"
           th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
-
     <style>
         th {
             text-align: center;
@@ -236,7 +235,56 @@
 
 <body>
 
-<div th:replace="fragments/navbar :: navbar"></div>
+<div class="navbar navbar-inverse navbar-default.navbar-static-top" th:fragment="navbar">
+
+    <a th:href="@{/products}">
+        <img width="80px" th:src="@{/images/DXQquAwVoAAA28c.png}" alt="cat image"/>
+    </a>
+
+    <a sec:authorize="hasRole('ADMIN')" class="navbar-brand" th:href="@{/admin}">Admin Panel</a>
+
+
+    <a sec:authorize="hasRole('USER')" class="navbar-brand" th:href="@{/products}">CatBucks Coffee</a>
+
+    <a class="navbar-brand" sec:authorize="hasRole('ADMIN')" href="/admin" th:href="@{/admin}">
+        <span class="glyphicon glyphicon-home"></span> Admin Home
+    </a>
+
+    <a class="navbar-brand" th:href="@{/}">
+        <span class="glyphicon glyphicon-home"></span> Home
+    </a>
+
+
+    <a class="navbar-brand" th:href="@{/products}">
+        <span class="glyphicon glyphicon-search"></span> Products
+    </a>
+
+
+    <a class="navbar-brand" sec:authorize="isAuthenticated()" th:href="@{/cart}">
+        <span class="glyphicon glyphicon-shopping-cart"></span>Cart
+    </a>
+
+
+    <a class="navbar-brand" th:href="@{/products}">
+        <span class="glyphicon glyphicon-earphone"></span> Contact
+    </a>
+
+
+    <a class="navbar-brand" th:href="@{/about}">
+        <span class="glyphicon glyphicon glyphicon-list-alt"></span> About
+    </a>
+
+    <a class="navbar-brand" sec:authorize="isAuthenticated()" th:href="@{/profile}">Logged as '[[${#httpServletRequest.remoteUser}]]'</a>
+
+    <a class="navbar-brand" sec:authorize="!isAuthenticated()" href="/login" th:href="@{/login}">
+        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Login
+    </a>
+
+    <a class="navbar-brand" sec:authorize="isAuthenticated()" th:href="@{/logout}">
+        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
+    </a>
+
+</div>
 
 <div class="container mt-5 mb-5">
     <div class="d-flex justify-content-center row">
