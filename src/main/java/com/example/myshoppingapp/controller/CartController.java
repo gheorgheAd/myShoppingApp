@@ -2,6 +2,7 @@ package com.example.myshoppingapp.controller;
 
 import com.example.myshoppingapp.model.CartItem;
 import com.example.myshoppingapp.repository.CartItemRepository;
+import com.example.myshoppingapp.repository.OrderRepository;
 import com.example.myshoppingapp.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -19,11 +20,13 @@ public class CartController {
 
     private final CartItemRepository cartItemRepository;
     private final UserService userService;
+    private final OrderRepository orderRepository;
 
 
-    public CartController(CartItemRepository itemRepository, UserService userService) {
+    public CartController(CartItemRepository itemRepository, UserService userService, OrderRepository orderRepository) {
         this.cartItemRepository = itemRepository;
         this.userService = userService;
+        this.orderRepository = orderRepository;
     }
 
 
@@ -45,6 +48,7 @@ public class CartController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
         Integer userId = userService.findByUsername(username).getId();
+        cartItemRepository.save(new CartItem(1,userId,productId));
         return "redirect:/products";
     }
 
@@ -52,4 +56,9 @@ public class CartController {
     public String showCartPage() {
         return "cart";
     }
+
+//    @GetMapping("/checkout")
+//    public void checkout() {
+//orderRepository.
+//    }
 }
