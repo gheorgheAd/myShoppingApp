@@ -309,7 +309,7 @@
                             <div class="ratings mr-2"><i class="fa fa-star"></i><i
                                     class="fa fa-star"></i><i
                                     class="fa fa-star"></i><i class="fa fa-star"></i></div>
-                            <span>157</span>
+                            <span>getRandomNumberBetween(1,1000);</span>
                         </div>
 
                         <div class="mt-1 mb-1 spec-1">
@@ -337,20 +337,15 @@
 
                         <h6 class="text-success">Free shipping</h6>
 
-                        <div class="d-flex flex-column mt-4">
-                            <div>
-                                <a class="btn btn-primary btn-sm"
-                                   th:href="@{/products/} + ${product.id}">
-                                    <button type="submit" class="btn btn-primary btn-sm">
-                                        Details
-                                    </button>
-                                </a>
-                            </div>
-                            <button class="btn btn-outline-primary btn-sm mt-2"
-                                    type="button">Add to Cart
-                            </button>
-                            <div class="containerCart" style="align-content: center">
-                                <button class="add-to-cart-button btn btn-outline-primary btn-sm mt-2">
+                        <div class="flex-column mt-4">
+                            <a class="btn btn-primary btn-sm"
+                               th:href="@{/products/} + ${product.id}">
+                                <button type="submit" class="btn btn-primary btn-sm">
+                                    Details
+                                </button>
+                            </a>
+                            <div class="containerCart">
+                                <button class="add-to-cart-button">
                                     <svg class="add-to-cart-box box-1" width="24"
                                          height="24" viewBox="0 0 24 24"
                                          fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -383,8 +378,11 @@
                                 </button>
                             </div>
                         </div>
+
                     </div>
+
                 </th:block>
+
             </div>
         </div>
     </div>
@@ -394,6 +392,7 @@
         th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js}"></script>
 <script type="text/javascript"
         th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js}"></script>
+
 <script type="text/javascript">
     addToCartButton = document.querySelectorAll(".add-to-cart-button");
     document.querySelectorAll('.add-to-cart-button').forEach(function (addToCartButton) {
