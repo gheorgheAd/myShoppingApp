@@ -2,8 +2,11 @@ package com.example.myshoppingapp.controller;
 
 import com.example.myshoppingapp.model.CartItem;
 import com.example.myshoppingapp.repository.CartItemRepository;
+import com.example.myshoppingapp.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,15 +18,14 @@ import java.util.List;
 public class CartController {
 
     private final CartItemRepository cartItemRepository;
+    private final UserService userService;
 
-    public CartController(CartItemRepository itemRepository) {
+
+    public CartController(CartItemRepository itemRepository, UserService userService) {
         this.cartItemRepository = itemRepository;
+        this.userService = userService;
     }
 
-    @GetMapping
-    public String showCartPage() {
-        return "cart";
-    }
 
     @PostMapping("/items")
     ResponseEntity<CartItem> addItem(@RequestBody CartItem itemToAdd) {
@@ -36,5 +38,18 @@ public class CartController {
     @GetMapping("/{userId}")
     ResponseEntity<List<CartItem>> getUserItems(@PathVariable Integer userId) {
         return ResponseEntity.ok(cartItemRepository.findCartItemByUserId(userId));
+    }
+
+    @GetMapping("/addCart")
+    public String addCart(@RequestParam Integer productId, @RequestParam Integer quantity) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        Integer userId = userService.findByUsername(username).getId();
+        return "redirect:/products";
+    }
+
+    @GetMapping()
+    public String showCartPage() {
+        return "cart";
     }
 }
