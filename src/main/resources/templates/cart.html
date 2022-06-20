@@ -6,25 +6,73 @@
       xmlns: sec="//www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
+
     <meta charset="UTF-8">
     <title>Your Shopping Cart</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+
+    <style>
+        th {
+            text-align: center;
+        }
+
+        td {
+            text-align: center;
+        }
+    </style>
+
 </head>
 <body>
 
 <div th:replace="fragments/navbar :: navbar"></div>
 
 <div class="container-fluid text-center">
-    <div><h1>Your Shopping Cart</h1></div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="cartItem : ${cartItems}">
+                <tr>
+                    <td>[[${cartItem.getProduct().title}]]</td>
+                    <td>[[${cartItem.getProduct().price}]]</td>
+                    <td>[[${cartItem.quantity}]]</td>
+                    <td>
+                        <a th:href="@{'/cart/deleteItem/{id}'(id=${cartItem.id})}" class="col-md-1">
+                            <button type="button" class="btn btn-primary" th:text="Remove">Remove</button>
+                        </a>
+                    </td>
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
 
+        <div class="row panel-body">
+            <h2 class="col-md-11" th:inline="text">Total: [[${totalToPay}]]</h2>
+            <a th:href="@{'/checkout'}" class="col-md-1">
+                <button type="button" class="btn btn-danger" th:text="Checkout">Checkout</button>
+            </a>
+        </div>
 
-        <div th:if="${message}" class="alert-success"> [[${message}]] </div>
-    </div>
-
-    <div style="text-align: right">
-        <h3>Total: </h3>
     </div>
 
 </div>
+
+<div class="container-fluid text-center">
+    <button type="submit" class="btn btn-primary" onclick="goBack()">Back To Shop</button>
+</div>
+
+<script type="text/javascript">
+    function goBack() {
+        window.location = "/products";
+    }
+</script>
+
 </body>
 </html>
