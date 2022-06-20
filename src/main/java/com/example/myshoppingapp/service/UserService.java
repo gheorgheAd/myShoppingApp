@@ -4,6 +4,8 @@ import com.example.myshoppingapp.exception.NoUserFoundException;
 import com.example.myshoppingapp.model.User;
 import com.example.myshoppingapp.repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -36,6 +38,12 @@ public class UserService {
         }
 
         return userRepository.save(user);
+    }
+
+    public Integer getCurrentUserId() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName();
+        return userRepository.findByUsername(username).getId();
     }
 
     public User findById(Integer id) throws NoUserFoundException {
