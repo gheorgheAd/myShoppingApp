@@ -12,6 +12,10 @@
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 
     <style>
+        .space {
+            margin-bottom: 25px;
+        }
+
         th {
             text-align: center;
         }
@@ -27,7 +31,8 @@
 <div th:replace="fragments/navbar :: navbar"></div>
 
 <div class="container-fluid text-center">
-    <div>
+
+    <div class="space">
         <table class="table table-bordered">
             <thead class="table-dark">
             <tr>
@@ -43,29 +48,41 @@
                     <td>[[${cartItem.getProduct().title}]]</td>
                     <td>[[${cartItem.getProduct().price}]]</td>
                     <td>[[${cartItem.quantity}]]</td>
-                    <td>
-                        <a th:href="@{'/cart/deleteItem/{id}'(id=${cartItem.id})}" class="col-md-1">
-                            <button type="button" class="btn btn-primary" th:text="Remove">Remove</button>
+                    <td style="align-content: center">
+                        <a th:href="@{'/cart/deleteItem/{id}'(id=${cartItem.id})}" class="col-md-1" style="align-self: center">
+                            <button type="button" class="btn btn-primary" th:text="Remove" style="align-self: center">Remove</button>
                         </a>
                     </td>
                 </tr>
             </th:block>
             </tbody>
         </table>
+    </div>
 
-        <div class="row panel-body">
-            <h2 class="col-md-11" th:inline="text">Total: [[${totalToPay}]]</h2>
-            <a th:href="@{'/checkout'}" class="col-md-1">
+    <div class="row panel-body" style="text-align: right; margin-right: 50px">
+
+        <div>
+            <h4 class="col-md-11" th:inline="text">Total: [[${totalToPay}]]</h4>
+        </div>
+
+        <div class="space">
+            <a th:href="@{'/checkout'}">
                 <button type="button" class="btn btn-danger" th:text="Checkout">Checkout</button>
             </a>
         </div>
 
     </div>
 
-</div>
+    <div class="space">
+        <a th:href="@{'/cart/deleteCartItemsByUserId/{id}'(id=${loggedUserId})}">
+            <button type="button" class="btn btn-primary">Empty Your Cart</button>
+        </a>
+    </div>
 
-<div class="container-fluid text-center">
-    <button type="submit" class="btn btn-primary" onclick="goBack()">Back To Shop</button>
+    <div class="space" style="text-align: center">
+        <button type="submit" class="btn btn-primary" onclick="goBack()">Back To Shop</button>
+    </div>
+
 </div>
 
 <script type="text/javascript">
