@@ -23,9 +23,9 @@ public class MainController {
         return "contact";
     }
 
-    @GetMapping("/checkout")
-    public String showCheckoutPage() {
-        return "checkout";
-    }
+//    @GetMapping("/checkout")
+//    public String showCheckoutPage() {
+//        return "checkout";
+//    }
 
 }
