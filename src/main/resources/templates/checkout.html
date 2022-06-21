@@ -30,32 +30,32 @@
 
     <div class="row panel-body" style="text-align: right; margin-right: 50px">
 
-        <form action="/action_page.php">
+        <form action="payment">
             <label for="fname">First name:</label><br>
-            <input type="text" id="fname" name="fname"><br>
+            <input type="text" id="fname" name="fname" required><br>
             <label for="lname">Last name:</label><br>
-            <input type="text" id="lname" name="lname"><br><br>
+            <input type="text" id="lname" name="lname" required><br><br>
             <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email"><br><br>
+            <input type="email" id="email" name="email" required><br><br>
             <label for="address">Delivery Address:</label><br>
-            <input type="text" id="address" name="address"><br><br>
+            <input type="text" id="address" name="address" required><br><br>
             <label for="phoneNumber">Phone number:</label><br>
-            <input type="number" id="phoneNumber" name="phoneNumber"><br><br>
+            <input type="number" id="phoneNumber" name="phoneNumber" required><br><br>
             <label for="cardHolderName">Card Holder Name:</label><br>
-            <input type="name" id="cardHolderName" name="cardHolderName"><br><br>
+            <input type="name" id="cardHolderName" name="cardHolderName" required><br><br>
             <label for="cardNumber">Card number:</label><br>
-            <input type="number" id="cardNumber" name="cardNumber"><br><br>
+            <input type="number" id="cardNumber" name="cardNumber" required><br><br>
             <label for="expirationDate">Expiration date:</label><br>
-            <input type="date" id="expirationDate" name="expirationDate"><br><br>
+            <input type="date" id="expirationDate" name="expirationDate" required><br><br>
             <label for="cvcCode">CVC code:</label><br>
-            <input type="number" id="cvcCode" name="cvcCode"><br><br>
+            <input type="number" id="cvcCode" name="cvcCode" required><br><br>
+            <div><a class="btn btn-primary btn-sm"
+                    th:href="@{/payment}">
+                <button type="submit" class="btn btn-primary btn-sm">
+                    Submit
+                </button>
+            </a></div>
         </form>
-        <div> <a class="btn btn-primary btn-sm"
-                 th:href="@{/payment}">
-            <button type="submit" class="btn btn-primary btn-sm">
-                Submit
-            </button>
-        </a></div>
 
     </div>
 
