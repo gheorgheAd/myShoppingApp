@@ -30,10 +30,6 @@ public class CartItemService {
         return cartItemRepository.findCartItemsByUserId(userId);
     }
 
-    public boolean existsByUserIdAndProductId(Integer userId, Integer productId) {
-        return cartItemRepository.existsByUserIdAndProductId(userId, productId);
-    }
-
     public void addToCart(Integer productId) throws NoUserFoundException {
         Integer userId = userService.getCurrentUserId();
         CartItem cartItem;
@@ -49,7 +45,7 @@ public class CartItemService {
     }
 
     public Float getCartTotal(List<CartItem> cartItems) {
-        Float cartTotal = 0.0F;
+        float cartTotal = 0.0F;
 
         for (CartItem cartItem : cartItems) {
             cartTotal+= cartItem.getProduct().getPrice() * cartItem.getQuantity();

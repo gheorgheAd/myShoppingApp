@@ -3,8 +3,9 @@ package com.example.myshoppingapp.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Data
 @NoArgsConstructor
@@ -34,8 +35,8 @@ public class User extends BaseEntity {
     private String phoneNumber;
 
     @Column(nullable = false, columnDefinition = "ROLE_USER")
-    private String role;
+    private String role = "ROLE_USER";
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "1")
     private boolean enabled;
 }
