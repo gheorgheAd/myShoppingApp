@@ -22,7 +22,7 @@ public class CartItemService {
 
     private final ProductService productService;
 
-    public CartItem save(CartItem cartItem) {
+    public CartItem saveCartItem(CartItem cartItem) {
         return cartItemRepository.save(cartItem);
     }
 
@@ -30,11 +30,7 @@ public class CartItemService {
         return cartItemRepository.findCartItemsByUserId(userId);
     }
 
-    public boolean existsByUserIdAndProductId(Integer userId, Integer productId) {
-        return cartItemRepository.existsByUserIdAndProductId(userId, productId);
-    }
-
-    public void addToCart(Integer productId) throws NoUserFoundException {
+    public void addCartItem(Integer productId) throws NoUserFoundException {
         Integer userId = userService.getCurrentUserId();
         CartItem cartItem;
 
@@ -49,7 +45,7 @@ public class CartItemService {
     }
 
     public Float getCartTotal(List<CartItem> cartItems) {
-        Float cartTotal = 0.0F;
+        float cartTotal = 0.0F;
 
         for (CartItem cartItem : cartItems) {
             cartTotal+= cartItem.getProduct().getPrice() * cartItem.getQuantity();
@@ -58,7 +54,7 @@ public class CartItemService {
         return cartTotal;
     }
 
-    public void delete(Integer id) {
+    public void deleteCartItemById(Integer id) {
         cartItemRepository.deleteById(id);
     }
 
@@ -69,4 +65,11 @@ public class CartItemService {
         }
         return optionalCartItem.get();
     }
+
+    public void deleteCartItemsByUser(Integer id) {
+
+        findCartItemsByUserId(id).forEach(cartItem -> cartItemRepository.deleteById(cartItem.getId()));
+
+    }
+
 }

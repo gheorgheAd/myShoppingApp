@@ -4,10 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-import java.util.Random;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,14 +15,20 @@ import java.util.Random;
 @Table(name = "products")
 public class Product extends BaseEntity {
 
+    @Column(nullable = false)
     private String title;
+
+    @Column(nullable = false)
 
     private String description;
 
+    @Column(nullable = false)
     private String image;
 
-    private Float price;
+    @Column(nullable = false)
+    private float price;
 
+    @Column(nullable = false)
     private String producer;
 
 }

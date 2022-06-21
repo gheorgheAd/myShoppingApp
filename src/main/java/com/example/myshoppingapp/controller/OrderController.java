@@ -29,6 +29,7 @@ public class OrderController {
     @GetMapping()
     public String checkout() throws NoUserFoundException {
         orderService.checkout();
+        cartItemService.deleteCartItemsByUser(userService.getCurrentUserId());
         return "checkout";
     }
 }

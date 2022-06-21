@@ -25,6 +25,7 @@ INSERT INTO `online_store`.`order_details` (`quantity`, `unit_price`, `product_i
 INSERT INTO `online_store`.`order_details` (`quantity`, `unit_price`, `product_id`, `order_id`) VALUES ('1', '61.6', '10', '2');
 INSERT INTO `online_store`.`order_details` (`quantity`, `unit_price`, `product_id`, `order_id`) VALUES ('2', '50.70', '3', '2');
 INSERT INTO `online_store`.`order_details` (`quantity`, `unit_price`, `product_id`, `order_id`) VALUES ('1', '78.39', '1', '2');
+<<<<<<< HEAD
 
 INSERT INTO `online_store`.`cart_items` (`quantity`, `user_id`, `product_id`) VALUES ('2', '1', '1');
 INSERT INTO `online_store`.`cart_items` (`quantity`, `user_id`, `product_id`) VALUES ('2', '1', '3');
@@ -35,3 +36,5 @@ INSERT INTO `online_store`.`cart_items` (`quantity`, `user_id`, `product_id`) VA
 INSERT INTO `online_store`.`cart_items` (`quantity`, `user_id`, `product_id`) VALUES ('6', '2', '5');
 INSERT INTO `online_store`.`cart_items` (`quantity`, `user_id`, `product_id`) VALUES ('2', '2', '2');
 INSERT INTO `online_store`.`cart_items` (`quantity`, `user_id`, `product_id`) VALUES ('1', '2', '1');
+=======
+>>>>>>> 93a1324a1ee37e37f0ea5929f5966ca8074927fc

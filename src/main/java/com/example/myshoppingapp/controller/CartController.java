@@ -30,21 +30,27 @@ public class CartController {
 
     @GetMapping("/addCart")
     public String addCart(@RequestParam Integer productId) throws NoUserFoundException {
-        cartItemService.addToCart(productId);
+        cartItemService.addCartItem(productId);
         return "redirect:/products";
     }
 
     @GetMapping("/deleteItem/{id}")
     public String deleteProduct(@PathVariable Integer id) {
-        cartItemService.delete(id);
+        cartItemService.deleteCartItemById(id);
         return "redirect:/cart";
+    }
+
+    @GetMapping("/deleteCartItemsByUserId/{id}")
+    public String deleteCartItemsByUser(@PathVariable Integer id) {
+        cartItemService.deleteCartItemsByUser(id);
+        return "redirect:/products";
     }
 
     @GetMapping("/updateQuantity/{id}")
     public String updateQuantity(@PathVariable Integer id) throws NoCartItemFound {
         CartItem cartItem = cartItemService.findCartItemById(id);
         cartItem.setQuantity(cartItem.getQuantity() + 1);
-        cartItemService.save(cartItem);
+        cartItemService.saveCartItem(cartItem);
         return "redirect:/cart";
     }
 
@@ -52,6 +58,7 @@ public class CartController {
     public String showUserCart(ModelMap modelMap) {
         Integer userId = userService.getCurrentUserId();
         List<CartItem> cartItems = cartItemService.findCartItemsByUserId(userId);
+        modelMap.addAttribute("loggedUserId", userId);
         modelMap.addAttribute("cartItems", cartItems);
         modelMap.addAttribute("totalToPay", cartItemService.getCartTotal(cartItems));
         return "cart";
