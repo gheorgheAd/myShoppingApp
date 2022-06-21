@@ -9,6 +9,17 @@
     <meta charset="UTF-8">
     <title>Manage Users</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+
+    <style>
+        .space {
+            margin-bottom: 25px;
+        }
+
+        form {
+            text-align: center;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -17,8 +28,38 @@
 
 <div class="container-fluid text-center">
 
+    <div class="row panel-body" style="text-align: right; margin-right: 50px">
 
-        </div>
+        <form action="/action_page.php">
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname"><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname"><br><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br><br>
+            <label for="address">Delivery Address:</label><br>
+            <input type="text" id="address" name="address"><br><br>
+            <label for="phoneNumber">Phone number:</label><br>
+            <input type="number" id="phoneNumber" name="phoneNumber"><br><br>
+            <label for="cardHolderName">Card Holder Name:</label><br>
+            <input type="name" id="cardHolderName" name="cardHolderName"><br><br>
+            <label for="cardNumber">Card number:</label><br>
+            <input type="number" id="cardNumber" name="cardNumber"><br><br>
+            <label for="expirationDate">Expiration date:</label><br>
+            <input type="date" id="expirationDate" name="expirationDate"><br><br>
+            <label for="cvcCode">CVC code:</label><br>
+            <input type="number" id="cvcCode" name="cvcCode"><br><br>
+        </form>
+        <div> <a class="btn btn-primary btn-sm"
+                 th:href="@{/payment}">
+            <button type="submit" class="btn btn-primary btn-sm">
+                Submit
+            </button>
+        </a></div>
+
+    </div>
+
+</div>
 
 </body>
 </html>

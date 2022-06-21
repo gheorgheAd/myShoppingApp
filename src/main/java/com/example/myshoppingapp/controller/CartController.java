@@ -4,6 +4,7 @@ import com.example.myshoppingapp.exception.NoCartItemFound;
 import com.example.myshoppingapp.exception.NoUserFoundException;
 import com.example.myshoppingapp.model.CartItem;
 import com.example.myshoppingapp.service.CartItemService;
+import com.example.myshoppingapp.service.OrderService;
 import com.example.myshoppingapp.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -23,9 +24,12 @@ public class CartController {
     private final CartItemService cartItemService;
     private final UserService userService;
 
-    public CartController(CartItemService cartItemService, UserService userService) {
+    private final OrderService orderService;
+
+    public CartController(CartItemService cartItemService, UserService userService, OrderService orderService) {
         this.cartItemService = cartItemService;
         this.userService = userService;
+        this.orderService = orderService;
     }
 
     @GetMapping("/addCart")

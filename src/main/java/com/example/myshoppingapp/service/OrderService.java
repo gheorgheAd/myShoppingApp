@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -27,7 +28,10 @@ public class OrderService {
         Float totalPrice = cartItemService.getCartTotal(cartItemService.findCartItemsByUserId(userId));
         Order order = new Order(totalPrice, new Date(), userService.findById(userId));
         orderRepository.save(order);
-//        cartItemService.deleteCartItemsByUserId(userId);
+    }
+
+    public List<Order> findOrdersByUserId(Integer userId) {
+        return orderRepository.findOrderByUserId(userId);
     }
 }
 
