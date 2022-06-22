@@ -1,14 +1,16 @@
 package com.example.myshoppingapp.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity {
@@ -39,4 +41,5 @@ public class User extends BaseEntity {
 
     @Column(nullable = false, columnDefinition = "1")
     private boolean enabled;
+
 }

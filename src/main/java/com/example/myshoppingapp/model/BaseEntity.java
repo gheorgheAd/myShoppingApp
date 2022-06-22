@@ -1,6 +1,6 @@
 package com.example.myshoppingapp.model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,7 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
+@AllArgsConstructor
 public class BaseEntity {
 
     @Id

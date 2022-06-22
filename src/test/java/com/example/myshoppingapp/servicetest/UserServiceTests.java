@@ -1,8 +1,8 @@
 package com.example.myshoppingapp.servicetest;
 
 import com.example.myshoppingapp.exception.NoUserFoundException;
-import com.example.myshoppingapp.model.User;
 import com.example.myshoppingapp.repository.UserRepository;
+import com.example.myshoppingapp.model.User;
 import com.example.myshoppingapp.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
