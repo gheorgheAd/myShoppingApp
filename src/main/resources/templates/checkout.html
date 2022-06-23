@@ -11,54 +11,88 @@
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 
     <style>
-        .space {
-            margin-bottom: 25px;
-        }
-
         form {
             text-align: center;
         }
 
+        label {
+            margin-bottom: 15px;
+            display: inline-block;
+            width: 150px;
+            text-align: left;
+        }
     </style>
 </head>
 
 <body>
 
-<div th:replace="fragments/navbar :: navbar"></div>
+<div style="margin-bottom: 10px" th:replace="fragments/navbar :: navbar"></div>
 
 <div class="container-fluid text-center">
 
-    <div class="row panel-body" style="text-align: right; margin-right: 50px">
+    <div style="margin-bottom: 30px"><h1>Complete Order Details</h1></div>
 
-        <form action="payment">
-            <label for="fname">First name:</label><br>
-            <input type="text" id="fname" name="fname" required><br>
-            <label for="lname">Last name:</label><br>
-            <input type="text" id="lname" name="lname" required><br><br>
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" required><br><br>
-            <label for="address">Delivery Address:</label><br>
-            <input type="text" id="address" name="address" required><br><br>
-            <label for="phoneNumber">Phone number:</label><br>
-            <input type="number" id="phoneNumber" name="phoneNumber" required><br><br>
-            <label for="cardHolderName">Card Holder Name:</label><br>
-            <input type="name" id="cardHolderName" name="cardHolderName" required><br><br>
-            <label for="cardNumber">Card number:</label><br>
-            <input type="number" id="cardNumber" name="cardNumber" required><br><br>
-            <label for="expirationDate">Expiration date:</label><br>
-            <input type="date" id="expirationDate" name="expirationDate" required><br><br>
-            <label for="cvcCode">CVC code:</label><br>
-            <input type="number" id="cvcCode" name="cvcCode" required><br><br>
-            <div><a class="btn btn-primary btn-sm"
-                    th:href="@{/payment}">
-                <button type="submit" class="btn btn-primary btn-sm">
-                    Submit
-                </button>
-            </a></div>
-        </form>
+    <form th:action="payment" th:object="${user}">
 
-    </div>
+        <fieldset>
 
+            <div>
+
+                <div>
+                    <label>First Name</label>
+                    <input type="text" th:field="*{firstName}"/>
+                </div>
+
+                <div>
+                    <label>Last Name</label>
+                    <input type="text" th:field="*{lastName}"/>
+                </div>
+
+                <div>
+                    <label>Email</label>
+                    <input type="email" th:field="*{email}"/>
+                </div>
+
+                <div>
+                    <label>Phone Number</label>
+                    <input type="text" th:field="*{phoneNumber}"/>
+                </div>
+
+                <div>
+                    <label>Delivery Address</label>
+                    <input type="text" th:field="*{address}" height="55px"/>
+                </div>
+
+                <div>
+                    <label>Card Holder Name</label>
+                    <input type="name" name="cardHolderName" required>
+                </div>
+
+                <div>
+                    <label >Card number</label>
+                    <input type="number" name="cardNumber" required>
+                </div>
+
+                <div>
+                    <label>CVC</label>
+                    <input type="number" name="cvcCode" required>
+                </div>
+
+                <div>
+                    <label width="300px">This order is a gift</label>
+                    <input type="checkbox"/>
+                </div>
+
+                <div>
+                    <a class="btn btn-primary btn-sm" th:href="@{/payment}">
+                        <button type="submit" class="btn btn-primary btn-sm">Place Order</button>
+                    </a>
+                </div>
+
+            </div>
+
+        </fieldset>
+    </form>
 </div>
 
 </body>

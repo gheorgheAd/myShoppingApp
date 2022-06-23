@@ -28,7 +28,7 @@
 
                 <li>
                     <a href="/admin" th:href="@{/admin}">
-                        <span class="glyphicon glyphicon-home"></span>  Admin Home
+                        <span class="glyphicon glyphicon-home"></span> Admin Home
                     </a>
                 </li>
 
@@ -38,13 +38,13 @@
 
                 <li>
                     <a th:href="@{/}">
-                        <span class="glyphicon glyphicon-home"></span>  Home
+                        <span class="glyphicon glyphicon-home"></span> Home
                     </a>
                 </li>
 
                 <li>
                     <a th:href="@{/products}">
-                        <span class="glyphicon glyphicon-search"></span>  Products
+                        <span class="glyphicon glyphicon-search"></span> Products
                     </a>
                 </li>
 
@@ -56,19 +56,25 @@
 
                 <li>
                     <a th:href="@{/contact}">
-                        <span class="glyphicon glyphicon-earphone"></span>  Contact
+                        <span class="glyphicon glyphicon-earphone"></span> Contact
                     </a>
                 </li>
 
                 <li>
                     <a th:href="@{/about}">
-                        <span class="glyphicon glyphicon glyphicon-list-alt"></span>  About
+                        <span class="glyphicon glyphicon glyphicon-list-alt"></span> About
                     </a>
                 </li>
 
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{'/orders'}">
+                        <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>&nbsp;History
+                    </a>
+                </li>
 
                 <li sec:authorize="isAuthenticated()">
                     <a th:href="@{/profile}">Logged as '[[${#httpServletRequest.remoteUser}]]'</a>

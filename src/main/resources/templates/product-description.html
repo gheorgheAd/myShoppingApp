@@ -1,37 +1,64 @@
 <!DOCTYPE html>
 
 <html lang="en"
-	  xmlns:th="http://thymeleaf.org"
-	  xmlns="http://www.w3.org/1999/xhtml"
-	  xmlns: sec="//www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+      xmlns:th="http://thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns: sec="//www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
-	<meta charset="UTF-8">
-	<title>Manage Products</title>
-	<link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <meta charset="UTF-8">
+    <title>Manage Products</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
 </head>
 <body>
 
 <div th:replace="fragments/navbar :: navbar"></div>
 
-<div class="container-fluid text-center">
-	<th:block>
-			<div>
-				<h5>[[${productById.title}]]</h5>
-			</div>
-			<div>
-				<h5>[[${productById.description}]]</h5>
-			</div>
-			<div>
-				<h5>[[${productById.image}]]</h5>
-			</div>
-			<div>
-				<h5>[[${productById.price}]]</h5>
-			</div>
-			<div>
-				<h5>[[${productById.producer}]]</h5>
-			</div>
-	</th:block>
+<div class="container mt-5 mb-5">
+    <div class="d-flex justify-content-center row">
+        <div class="col-md-10">
+            <div class="row p-2 bg-white border rounded">
+
+                <div class="col-md-3 mt-1">
+                    <img class="img-fluid img-responsive rounded product-image"
+                         th:src="@{${product.image}}">
+                </div>
+
+                <div class="col-md-6 mt-1">
+
+                    <p class="text-justify para mb-0">
+                        [[${product.title}]]
+                        <br><br>
+                    </p>
+
+                    <div class="d-flex flex-row">
+                        <div class="ratings mr-2"><i class="fa fa-star"></i><i
+                                class="fa fa-star"></i><i
+                                class="fa fa-star"></i><i class="fa fa-star"></i></div>
+                        <span>getRandomNumberBetween(1,1000);</span>
+                    </div>
+
+                    <div class="mt-1 mb-1 spec-1">
+                        <span>Producer: [[${product.producer}]]</span>
+                    </div>
+
+                    <div class="mt-1 mb-1 spec-1">
+                        <span>Unique design</span>
+                        <span class="dot"></span><span>For men</span>
+                        <span class="dot"></span><span>Casual<br></span>
+                    </div>
+
+                    <h5 class="text-justify text-truncate para mb-0">
+                        [[${product.description}]]
+                        <br><br>
+                    </h5>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
 </div>
+
 </body>
 </html>

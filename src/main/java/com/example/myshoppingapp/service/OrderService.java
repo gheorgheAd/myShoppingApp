@@ -6,6 +6,7 @@ import com.example.myshoppingapp.repository.OrderRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class OrderService {
     public void checkout() throws NoUserFoundException {
         Integer userId = userService.getCurrentUserId();
         Float totalPrice = cartItemService.getCartTotal(cartItemService.findCartItemsByUserId(userId));
-        Order order = new Order(totalPrice, new Date(), userService.findById(userId));
+        Order order = new Order(totalPrice, LocalDate.now(), userService.findById(userId));
         orderRepository.save(order);
     }
 

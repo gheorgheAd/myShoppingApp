@@ -32,7 +32,7 @@ public class ProductController {
     @SneakyThrows
     public String showProductById(@PathVariable Integer id, ModelMap modelMap) {
         Product product = service.findById(id);
-        modelMap.addAttribute("productById", product);
+        modelMap.addAttribute("product", product);
         return "product-description";
     }
 

@@ -36,6 +36,11 @@ public class UserController {
         return "successful-registration-message";
     }
 
+    @GetMapping("/message-sent")
+    public String successfulSend() {
+        return "message-sent";
+    }
+
     @PostMapping("/profile/update")
     public String updateUser(User user) {
         userService.save(user);
@@ -50,4 +55,5 @@ public class UserController {
         modelMap.addAttribute(user);
         return "profile";
     }
+
 }

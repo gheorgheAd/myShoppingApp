@@ -26,20 +26,21 @@
     </style>
 
 </head>
+
 <body>
 
 <div th:replace="fragments/navbar :: navbar"></div>
 
 <div class="container-fluid text-center">
 
-    <h1>Thank you! Your order was placed successfully!</h1>
-
-    <div class="space">
-        <a th:href="@{'/orders'}">
-            <button type="button" class="btn btn-danger" th:text="Old_Orders">Your Orders</button>
+    <h1>Thank you!</h1>
+    <h1>Your order was placed successfully!</h1>
+    <div>
+        <a th:href="@{/}">
+            <button type="submit" class="btn btn-primary">Home Page</button>
         </a>
     </div>
-</div>
+
 </div>
 </body>
 </html>

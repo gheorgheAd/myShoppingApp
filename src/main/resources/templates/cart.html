@@ -33,7 +33,12 @@
 <div class="container-fluid text-center">
 
     <div class="space">
-        <table class="table table-bordered">
+
+        <div th:if="${cartItems.size()} == '0'" style="margin-top: 55px; margin-bottom: 55px">
+            <h1>Your Cart Is Empty !</h1>
+        </div>
+
+        <table th:unless="${cartItems.size()} == '0'" class="table table-bordered">
             <thead class="table-dark">
             <tr>
                 <th>Product</th>
@@ -59,13 +64,13 @@
         </table>
     </div>
 
-    <div class="row panel-body" style="text-align: right; margin-right: 50px">
+    <div th:unless="${cartItems.size()} == '0'" class="row panel-body" style="text-align: right; margin-right: 50px">
 
         <div>
             <h4 class="col-md-11" th:inline="text">Total: [[${totalToPay}]]</h4>
         </div>
 
-        <div class="space">
+        <div class="space" th:if="@{totalToPay != '0.0'}">
             <a th:href="@{'/checkout'}">
                 <button type="button" class="btn btn-danger" th:text="Checkout">Checkout</button>
             </a>
@@ -73,7 +78,7 @@
 
     </div>
 
-    <div class="space">
+    <div th:unless="${cartItems.size()} == '0'" class="space">
         <a th:href="@{'/cart/deleteCartItemsByUserId/{id}'(id=${loggedUserId})}">
             <button type="button" class="btn btn-primary">Empty Your Cart</button>
         </a>

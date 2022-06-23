@@ -29,9 +29,10 @@ public class OrderController {
     }
 
     @GetMapping("/checkout")
-    public String checkout() throws NoUserFoundException {
+    public String checkout(ModelMap modelMap) throws NoUserFoundException {
         orderService.checkout();
         cartItemService.deleteCartItemsByUser(userService.getCurrentUserId());
+        modelMap.addAttribute("user", userService.findById(userService.getCurrentUserId()));
         return "checkout";
     }
 
