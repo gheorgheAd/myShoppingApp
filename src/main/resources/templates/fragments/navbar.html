@@ -24,15 +24,15 @@
 
         <div class="navbar-collapse collapse">
 
-            <ul class="nav navbar-nav navbar-left" sec:authorize="hasRole('ADMIN')">
+            <!--            <ul class="nav navbar-nav navbar-left" sec:authorize="hasRole('ADMIN')">-->
 
-                <li>
-                    <a href="/admin" th:href="@{/admin}">
-                        <span class="glyphicon glyphicon-home"></span> Admin Home
-                    </a>
-                </li>
+            <!--                <li>-->
+            <!--                    <a href="/admin" th:href="@{/admin}">-->
+            <!--                        <span class="glyphicon glyphicon-home"></span> Admin Home-->
+            <!--                    </a>-->
+            <!--                </li>-->
 
-            </ul>
+            <!--            </ul>-->
 
             <ul class="nav navbar-nav">
 
@@ -45,12 +45,6 @@
                 <li>
                     <a th:href="@{/products}">
                         <span class="glyphicon glyphicon-search"></span> Products
-                    </a>
-                </li>
-
-                <li sec:authorize="isAuthenticated()">
-                    <a th:href="@{/cart}">
-                        <span class="glyphicon glyphicon-shopping-cart"></span>Cart
                     </a>
                 </li>
 
@@ -71,12 +65,6 @@
             <ul class="nav navbar-nav navbar-right">
 
                 <li sec:authorize="isAuthenticated()">
-                    <a th:href="@{'/orders'}">
-                        <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>&nbsp;History
-                    </a>
-                </li>
-
-                <li sec:authorize="isAuthenticated()">
                     <a th:href="@{/profile}">Logged as '[[${#httpServletRequest.remoteUser}]]'</a>
                 </li>
 
@@ -89,6 +77,16 @@
                 <li sec:authorize="isAuthenticated()">
                     <a th:href="@{/logout}">
                         <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
+                    </a>
+                </li>
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{'/orders'}">
+                        <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Orders History
+                    </a>
+                </li>
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/cart}">
+                        <span class="glyphicon glyphicon-shopping-cart"></span>Cart
                     </a>
                 </li>
 

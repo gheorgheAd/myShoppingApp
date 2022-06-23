@@ -8,6 +8,7 @@
         .pond {
             display: flex;
             justify-content: space-around;
+            margin-left: 10%;
         }
 
         body {
@@ -82,12 +83,16 @@
 <body>
 
 <div class="about-section">
-    <h4>About Us Page</h4>
-    <p>Some text about who we are and what we do.</p>
+    <h4>About Us</h4>
     <p>Resize the browser window to see that this page is responsive by the way.</p>
+    <div>
+        <a th:href="@{/}">
+            <button type="submit" class="btn btn-primary">Home Page</button>
+        </a>
+    </div>
 </div>
 
-<h2 style="text-align:center">Our Team</h2>
+<h2 style="text-align:center">CatBucks Team</h2>
 <div class="row pond" style="align-content: center">
     <div class="column" >
         <div class="card">
@@ -97,7 +102,9 @@
                 <p class="title">CEO & Founder CatBucks Caffe</p>
                 <p>Coffee enthusiast</p>
                 <p>stanciu.alin.1994@gmail.com</p>
-                <p><button class="button">Contact</button></p>
+                <form th:action="@{/message-sent}">
+                    <p><button class="button">Contact</button></p>
+                </form>
             </div>
         </div>
     </div>
@@ -106,15 +113,16 @@
         <div class="card">
             <div class="container" style="text-align: center">
                 <img th:src="@{/images/DXQquAwVoAAA28c.png}" alt="Jane" style="width:50%">
-                <h2>Angel Stanciu</h2>
+                <h2>Adina Gheorghe</h2>
                 <p class="title">CEO & Founder CatBucks Caffe</p>
-                <p>Coffee enthusiast</p>
-                <p>stanciu.alin.1994@gmail.com</p>
+                <p>Coffee addicted</p>
+                <p>gheorghe.adina1996@yahoo.com</p>
+                <form th:action="@{/message-sent}">
                 <p><button class="button">Contact</button></p>
+                </form>
             </div>
         </div>
     </div>
 </div>
-
 </body>
 </html>

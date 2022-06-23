@@ -49,6 +49,11 @@
                     <td>[[${order.id}]]</td>
                     <td>[[${order.date}]]</td>
                     <td>[[${order.total}]]</td>
+                    <td>
+                        <a th:href="@{/order-details}">
+                            See Order
+                        </a>
+                    </td>
                 </tr>
             </th:block>
             </tbody>
