@@ -1,4 +1,4 @@
-package com.example.myshoppingapp.product;
+package com.example.myshoppingapp.service;
 
 import com.example.myshoppingapp.model.Product;
 import com.example.myshoppingapp.repository.ProductRepository;
@@ -17,7 +17,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @Rollback
-public class ProductRepositoryTest {
+public class ProductServiceTests {
 
     @Autowired
     private ProductRepository productRepositoryUnderTest;
