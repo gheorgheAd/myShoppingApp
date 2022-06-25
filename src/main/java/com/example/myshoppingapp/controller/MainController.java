@@ -23,4 +23,33 @@ public class MainController {
         return "contact";
     }
 
+    @GetMapping("/payment")
+    public String payment() {
+        return "payment";
+    }
+
+    @GetMapping("/order-details")
+    public String orderDetails() {
+        return "order-details";
+    }
+
+    @GetMapping("/recipes")
+    public String recipes() {
+        return "recipes";
+    }
+
+    @GetMapping("/french-cafe")
+    public String frenchCafe() {
+        return "french-cafe";
+    }
+
+    @GetMapping("/pour-over-coffee")
+    public String pourOverCoffee() {
+        return "pour-over-coffee";
+    }
+
+    @GetMapping("/cafecito")
+    public String cafecito() {
+        return "cafecito";
+    }
 }

@@ -45,10 +45,5 @@ public class OrderController {
         return "orders";
     }
 
-    @GetMapping("/payment")
-    public String payment() {
-        return "payment";
-    }
-
 }
 

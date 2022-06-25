@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns: sec="//www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <style>
+        body {
+            background: #eee
+        }
+
+        .space {
+            margin-bottom: 50px;
+        }
+
+        .steps {
+            padding: 5px;
+            text-align: center;
+            background-color: #474e5d;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="steps">
+    <h1>Steps to Make It</h1>
+</div>
+
+<div class="space">
+    <h3>1.Gather the ingredients:</h3>
+    <br>
+    <h4>- 1 part hot strong coffee, French roast;</h4>
+    <h4>- 1 part milk, steamed.</h4>
+    <br>
+    <div class="space" style="text-align: left">
+        <button type="submit" class="btn btn-primary" onclick="goToProductList()">Go to products list</button>
+    </div>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/_EUgEC0OcOA2OBjpfUv2zcSZSks=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/cafe-au-lait-recipe-1374920-step-01-a9666b1de6074bf793b7a9cdba3ad921.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+
+<div class="space">
+    <h3>2.Into a large cup, pour equal parts of strong hot coffee and steamed milk, reserving the foam.</h3>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/RbusvYrovS1ibusKq9e5m_7K5Ns=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/cafe-au-lait-recipe-1374920-step-02-afdc7823cf404a5f9deadaef8c9f4af3.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+
+<div class="space">
+    <h3>3.Stir.</h3>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/i7DvLVU0DLv5yhVN1744WTbX6io=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/cafe-au-lait-recipe-1374920-step-03-4bb4b4aa60dd4022a22b491a4a86eb81.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+
+<div class="space">
+    <h3>4.Spoon reserved foam on top and serve hot.</h3>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/gpay7A3XV95YmtKlIPkFATY5MR8=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/cafe-au-lait-recipe-1374920-step-04-aca06233628749508ca7974d73231fc2.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+
+<h3>5.If you're artistic, you might want to try your hand at using the steamed milk to create latte art, or
+    simply
+    give it a sprinkle of cinnamon.</h3>
+<div class="container" style="text-align: center">
+    <img th:src="@{https://www.thespruceeats.com/thmb/DxRxdsCiSuGSMhymX10MU6Ak2Kg=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/cafe-au-lait-recipe-1374920-step-05-8370cb9f28614c2b82faa8695dc3cbe7.jpg}"
+         alt="Jane" style="width:50%">
+</div>
+
+
+<h3>6.Enjoy it! (the most important actually!)</h3>
+
+<script type="text/javascript">
+    function goToProductList() {
+        window.location = "/products";
+    }
+</script>
+
+</body>
+</html>

@@ -164,6 +164,10 @@
         <a class="h3" th:href="@{/products}">Shop Our Coffee Selections</a>
     </div>
 
+    <div class="space">
+        <a class="h3" th:href="@{/recipes}">Recipes ideas for our coffee lovers</a>
+    </div>
+
     <div sec:authorize="!isAuthenticated()">
         <a th:href="@{/register}">
             <button type="submit" class="btn btn-primary">Register</button>

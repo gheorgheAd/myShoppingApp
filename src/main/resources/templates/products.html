@@ -241,14 +241,14 @@
         <img width="80px" th:src="@{/images/DXQquAwVoAAA28c.png}" alt="cat image"/>
     </a>
 
-    <a sec:authorize="hasRole('ADMIN')" class="navbar-brand" th:href="@{/admin}">Admin Panel</a>
+    <a sec:authorize="hasRole('ADMIN')" class="navbar-brand" th:href="@{/admin}">Administration Panel</a>
 
 
     <a sec:authorize="hasRole('USER')" class="navbar-brand" th:href="@{/products}">CatBucks Coffee</a>
 
-    <a class="navbar-brand" sec:authorize="hasRole('ADMIN')" href="/admin" th:href="@{/admin}">
-        <span class="glyphicon glyphicon-home"></span> Admin Home
-    </a>
+<!--    <a class="navbar-brand" sec:authorize="hasRole('ADMIN')" href="/admin" th:href="@{/admin}">-->
+<!--        <span class="glyphicon glyphicon-home"></span> Admin Home-->
+<!--    </a>-->
 
     <a class="navbar-brand" th:href="@{/}">
         <span class="glyphicon glyphicon-home"></span> Home
@@ -257,11 +257,6 @@
 
     <a class="navbar-brand" th:href="@{/products}">
         <span class="glyphicon glyphicon-search"></span> Products
-    </a>
-
-
-    <a class="navbar-brand" sec:authorize="isAuthenticated()" th:href="@{/cart}">
-        <span class="glyphicon glyphicon-shopping-cart"></span>Cart
     </a>
 
 
@@ -282,6 +277,14 @@
 
     <a class="navbar-brand" sec:authorize="isAuthenticated()" th:href="@{/logout}">
         <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
+    </a>
+
+    <a class="navbar-brand" th:href="@{'/orders'}">
+        <span class="glyphicon glyphicon-dashboard"></span> Orders History
+    </a>
+
+    <a class="navbar-brand" sec:authorize="isAuthenticated()" th:href="@{/cart}">
+        <span class="glyphicon glyphicon-shopping-cart"></span>Cart
     </a>
 
 </div>

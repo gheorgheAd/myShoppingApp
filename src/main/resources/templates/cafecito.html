@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns: sec="//www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <style>
+        body {
+            background: #eee
+        }
+
+        .space {
+            margin-bottom: 50px;
+        }
+
+        .steps {
+            padding: 5px;
+            text-align: center;
+            background-color: #474e5d;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="steps">
+    <h1>Steps to Make It</h1>
+</div>
+
+<div class="space">
+    <h3>1.Gather the ingredients:</h3>
+    <br>
+    <h4>- 1/4 cup finely ground coffee, or amount needed for pot;</h4>
+    <h4>- 1/2 cups water, or amount needed for pot;</h4>
+    <h4>- 1/4 cup granulated sugar.</h4>
+    <br>
+    <div class="space" style="text-align: left">
+        <button type="submit" class="btn btn-primary" onclick="goToProductList()">Go to products list</button>
+    </div>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/6BZA9VVHAwsk_YSajrZpuqee3dA=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/CubanCoffee-010-5a43833ee0be4bf6a43ebdd56b13004f.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+
+<div class="space">
+    <h3>2.In a large stovetop espresso maker, brew coffee according to the manufacturer's instructions using fine-ground
+        coffee.</h3>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/UcRIWkHrItZdKNdMmwKB3EU1kT0=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/CubanCoffee-009-ab3430ed96f746f781b0e8c3a4ddf0fd.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+
+<div class="space">
+    <h3>3.In a glass measuring cup with at least 2 cup capacity, add the sugar. Once a little bit of coffee has brewed,
+        add about 1 tablespoon to the sugar. Reserve a little extra coffee concentrate in a small dish to use if needed.
+        Place the pot back on the stove to finish brewing.</h3>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/DBoBmo94AVl2HxxEZbKQX3B13uM=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/CubanCoffee-008-fa11e3aa76a3464992f96c1d07292835.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+
+<div class="space">
+    <h3>4.Make the espuma by using a small whisk or spoon to vigorously beat the sugar and espresso until it is a pale
+        brown, almost foamy paste, about 2 to 3 minutes. You cannot beat it too much.</h3>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/yn4bjJjbhYfhpwfHhP6WVBi6YD0=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/CubanCoffee-007-496dadbf7423400cae8c5cc173790b17.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+
+<div class="space">
+    <h3>5.When the coffee has finished brewing, pour it over the espuma while stirring to incorporate. Let the foamy
+        crema rise to the top.</h3>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/0mg4CvZ5crOKo2-Q0aHlrEX1zes=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/CubanCoffee-006-ef3ee965db31434c8228b9d971da7882.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+
+<div class="space">
+    <h3>6.Pour into individual demitasse espresso cups. Shake the measuring cup a little and use a spoon as you pour to
+        get crema into each cup.</h3>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/vWO3s-6JiTj10Fk_MJdSwIgnM0o=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/CubanCoffee-005-56c10e84c9a043feae903b4bff79b711.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+
+<div class="space">
+    <h3>7.Enjoy it! (the most important actually!)</h3>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/AFt36Ths9skUiuf5QX3y-ZOliYg=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/CubanCoffee-001-4928e640d5b7491aa223fb594285a3bf.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+<script type="text/javascript">
+    function goToProductList() {
+        window.location = "/products";
+    }
+</script>
+</body>
+</html>

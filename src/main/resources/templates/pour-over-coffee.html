@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns: sec="//www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}">
+    <link rel="stylesheet" type="text/css"
+          th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <style>
+        body {
+            background: #eee
+        }
+
+        .space {
+            margin-bottom: 50px;
+        }
+
+        .steps {
+            padding: 5px;
+            text-align: center;
+            background-color: #474e5d;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="steps">
+    <h1>Steps to Make It</h1>
+</div>
+
+<div class="space">
+    <h3>1.Gather the ingredients and tools:</h3>
+    <br>
+    <h4>- 10 ounces (300 milliliters) filtered, distilled, or spring water;</h4>
+    <h4>- 2/3 ounce (18 grams) medium-fine ground coffee.</h4>
+    <br>
+    <div class="space" style="text-align: left">
+        <button type="submit" class="btn btn-primary" onclick="goToProductList()">Go to products list</button>
+    </div>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/rKgzs2_OGQ68tB5dbDekyh2wunA=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/PourOverCoffee-012-223960bde562437ea1b09b1c38032633.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+
+<div class="space">
+    <h3>2.Pour hot water into the serving cup to warm it.</h3>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/JZXF5-z0I3RpBLyCWHDEyVqmlq8=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/PourOverCoffee-010-ede38434896d4c8b836c0707185cf6da.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+
+<div class="space">
+    <h3>3.Add water to a gooseneck kettle and heat it on the stove until it reaches between 195 F and 205 F.</h3>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/azHGp32xu0EhxTw4txD-B410s0A=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/PourOverCoffee-009-87a43007236843f2b7c5a145f1a3ac02.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+
+<div class="space">
+    <h3>4.Grind coffee beans to a medium to fine ground (about the size of kosher salt or coarse sand).</h3>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/zH0-gL0rHUog67WBQBjRce58cXw=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/PourOverCoffee-011-f1aabe0e3f8a4cceb3ed25ce797eff41.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+
+<div class="space">
+    <h3>5.Measure the ground coffee in the pour-over brewer.</h3>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/9KUpvyjeWQUZ7xj3_-RHdVsjM8s=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/PourOverCoffee-008-c8e1e0658a654f82a21d7c788c2cbe6c.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+
+<div class="space">
+    <h3>6.When the water is heated, dump the water from the cup. Set the drip cone on the cup's rim. If using an
+        all-in-one brewer, assemble the pieces, then measure the coffee.</h3>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/yaH13KqRyRZoiF6KHMDyEYLeXPM=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/PourOverCoffee-007-2446f7c8971e489084c0bf25f42eb3ad.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+
+<div class="space">
+    <h3>7.Zero out the scale and start the timer. Beginning in the center of the coffee grounds and working your way
+        around, pour just enough water (about 1 3/4 ounces / 50 milliliters) from the kettle to wet all of the coffee.
+        Let it bloom and saturate the coffee for between 30 and 45 seconds.</h3>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/yaH13KqRyRZoiF6KHMDyEYLeXPM=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/PourOverCoffee-007-2446f7c8971e489084c0bf25f42eb3ad.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+
+<div class="space">
+    <h3>8.With the kettle spout as close to the cone as possible, continue to slowly pour water over the bed of coffee.
+        Work in even circles, starting in the middle and moving outwards (when the water drains, the grounds should be
+        flat, not concave). Do not pour water onto the cone or filter, only onto the coffee. Pause as needed to let it
+        catch up until you have poured the full 10 ounces (300 milliliters) of water.
+
+        The goal is to have a total brewing time of 3 to 4 minutes for medium roast coffee and as little as 2 1/2 to 3
+        minutes for a dark roast. It will continue to dip for about 30 seconds after you've added all the water.</h3>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/pl55uRXEECNdlhCgF_kHgyOMWEk=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/PourOverCoffee-005-57227cff55df47ce808fed7ea902d676.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+
+<div class="space">
+    <h3>9.Tap the cone to release the last bits of coffee, then set it on a second cup or saucer to catch any additional
+        drips.</h3>
+    <div class="container" style="text-align: center">
+        <img th:src="@{https://www.thespruceeats.com/thmb/twuGE1MbXd0xMT6dM5oclBWxBtI=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/PourOverCoffee-004-bedb4af8fbcf443ebe60fb0fcfc63095.jpg}"
+             alt="Jane" style="width:50%">
+    </div>
+</div>
+
+<h3>10.Enjoy it! (the most important actually!)</h3>
+<script type="text/javascript">
+    function goToProductList() {
+        window.location = "/products";
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .pond {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+
+        html {
+            box-sizing: border-box;
+        }
+
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+
+        .column {
+            width: 33.3%;
+            margin-bottom: 16px;
+            padding: 0 8px;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            margin: 8px;
+        }
+
+        .about-section {
+            padding: 5px;
+            text-align: center;
+            background-color: #474e5d;
+            color: white;
+        }
+
+        .container {
+            padding: 0 16px;
+        }
+
+        .container::after, .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .title {
+            color: grey;
+        }
+
+        .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+
+        @media screen and (max-width: 650px) {
+            .column {
+                width: 100%;
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="about-section">
+    <h4>How you like to drink your coffee?</h4>
+    <p>These are the ways we like it,maybe you'll like them to!</p>
+    <div>
+        <a th:href="@{/}">
+            <button type="submit" class="btn btn-primary">Home Page</button>
+        </a>
+    </div>
+</div>
+
+<h2 style="text-align:center">CatBucks Sugestions</h2>
+<div class="row pond" style="align-content: center">
+    <div class="column">
+        <div class="card">
+            <div class="container" style="text-align: center">
+                <img th:src="@{https://www.thespruceeats.com/thmb/_EUgEC0OcOA2OBjpfUv2zcSZSks=/580x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/cafe-au-lait-recipe-1374920-step-01-a9666b1de6074bf793b7a9cdba3ad921.jpg}"
+                     alt="Jane" style="width:50%">
+                <h2>French Cafe au Lait</h2>
+                <p>A bistro-style cafe au lait is oh-so-French and a fantastic way to greet a chilly morning. Make it
+                    with equal parts steamed milk and strong hot coffee, for an easy, elegant breakfast with flaky
+                    croissants. Or enjoy it as they do at sidewalk cafes in Paris: as an afternoon treat with a square
+                    of dark chocolate.</p>
+                <p>Preparation: 5 min</p>
+                <form th:action="@{/french-cafe}">
+                    <p>
+                        <button class="button">Steps to Prepare It</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <div class="container" style="text-align: center">
+                <img th:src="@{https://www.thespruceeats.com/thmb/69EilUEDLbXt4LET263fzTBPFPM=/566x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Pour-OverCoffee-TheSpruce-SCDesignStudios-72362e26f4fb4a4b8f50d6efb3e3c551.jpg}"
+                     alt="Jane" style="width:50%">
+                <h2>Pour-Over Coffee</h2>
+                <p>Pour-over coffee is a nostalgic brewing method that produces a rich, flavorful cup of coffee. It does
+                    require precision of measurements and brewing times, you need just regular coffee grinds and water
+                    to achieve the ideal cup.There are lots of tricks to transforming sugar into the perfect crema.</p>
+                <p>Preparation: 10 min</p>
+                <form th:action="@{/pour-over-coffee}">
+                    <p>
+                        <button class="button">Steps to Prepare It</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
+            <div class="container" style="text-align: center">
+                <img th:src="@{https://www.thespruceeats.com/thmb/ZIzGqZ3bH_w6f_wHCUjnt3OG_v0=/940x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/CubanCoffee-001-4928e640d5b7491aa223fb594285a3bf.jpg}"
+                     alt="Jane" style="width:50%">
+                <h2>Cuban Coffee (Cafecito)</h2>
+                <p>Cuban coffee is a sweet, rich, delicious hot beverage. Traditionally served after-dinner, it makes a
+                    great, dairy-free alternative to ice cream after a meal. You make it by topping potent shots of
+                    espresso with a thick layer of foamy crema made with sugar, instead of milk.</p>
+                <p>Preparation: 15 min</p>
+                <form th:action="@{/cafecito}">
+                    <p>
+                        <button class="button">Steps to Prepare It</button>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
