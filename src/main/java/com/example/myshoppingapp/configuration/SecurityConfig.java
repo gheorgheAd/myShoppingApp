@@ -1,5 +1,6 @@
 package com.example.myshoppingapp.configuration;
 
+import com.example.myshoppingapp.security.MyUserDetailsService;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -16,14 +17,16 @@ import javax.sql.DataSource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final DataSource dataSource;
+    private final MyUserDetailsService myUserDetailsService;
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication()
-                .passwordEncoder(new BCryptPasswordEncoder())
-                .dataSource(dataSource)
-                .usersByUsernameQuery("select username, password, enabled from users where username=?")
-                .authoritiesByUsernameQuery("select username, role from users where username=?");
+        auth
+                .userDetailsService(myUserDetailsService)
+                .passwordEncoder(new BCryptPasswordEncoder());
+//                .dataSource(dataSource)
+//                .usersByUsernameQuery("select username, password, enabled from users where username=?")
+//                .authoritiesByUsernameQuery("select username, role from users where username=?");
     }
 
     @Override

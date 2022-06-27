@@ -43,7 +43,7 @@ public class UserService {
     public Integer getCurrentUserId() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String username = authentication.getName();
-        return userRepository.findByUsername(username).getId();
+        return userRepository.findByEmail(username).getId();
     }
 
     public User findById(Integer id) throws NoUserFoundException {
@@ -63,7 +63,7 @@ public class UserService {
     }
 
     public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
+        return userRepository.findByEmail(username);
     }
 
 }

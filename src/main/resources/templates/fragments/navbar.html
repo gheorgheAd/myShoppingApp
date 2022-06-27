@@ -15,7 +15,7 @@
         </div>
 
         <div class="navbar-header" sec:authorize="hasRole('ADMIN')">
-            <a class="navbar-brand" th:href="@{/admin}">Administration Panel</a>
+            <a class="navbar-brand" th:href="@{/admin}">Admin Panel</a>
         </div>
 
         <div class="navbar-header" sec:authorize="hasRole('USER')">
@@ -23,16 +23,6 @@
         </div>
 
         <div class="navbar-collapse collapse">
-
-            <!--            <ul class="nav navbar-nav navbar-left" sec:authorize="hasRole('ADMIN')">-->
-
-            <!--                <li>-->
-            <!--                    <a href="/admin" th:href="@{/admin}">-->
-            <!--                        <span class="glyphicon glyphicon-home"></span> Admin Home-->
-            <!--                    </a>-->
-            <!--                </li>-->
-
-            <!--            </ul>-->
 
             <ul class="nav navbar-nav">
 
@@ -45,6 +35,12 @@
                 <li>
                     <a th:href="@{/products}">
                         <span class="glyphicon glyphicon-search"></span> Products
+                    </a>
+                </li>
+
+                <li>
+                    <a th:href="@{/recipes}">
+                        <span class="glyphicon glyphicon-baby-formula"></span> Recipes
                     </a>
                 </li>
 
@@ -64,29 +60,33 @@
 
             <ul class="nav navbar-nav navbar-right">
 
-                <li sec:authorize="isAuthenticated()">
-                    <a th:href="@{/profile}">Logged as '[[${#httpServletRequest.remoteUser}]]'</a>
-                </li>
-
                 <li sec:authorize="!isAuthenticated()">
                     <a href="/login" th:href="@{/login}">
-                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Login
+                        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login
                     </a>
                 </li>
 
-                <li sec:authorize="isAuthenticated()">
-                    <a th:href="@{/logout}">
-                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Logout
-                    </a>
-                </li>
                 <li sec:authorize="isAuthenticated()">
                     <a th:href="@{'/orders'}">
                         <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span> Orders History
                     </a>
                 </li>
+
                 <li sec:authorize="isAuthenticated()">
                     <a th:href="@{/cart}">
-                        <span class="glyphicon glyphicon-shopping-cart"></span>Cart
+                        <span class="glyphicon glyphicon-shopping-cart"></span> Cart
+                    </a>
+                </li>
+
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/profile}">
+                        <span class="glyphicon glyphicon-user"></span> '[[${#httpServletRequest.remoteUser}]]'
+                    </a>
+                </li>
+
+                <li sec:authorize="isAuthenticated()">
+                    <a th:href="@{/logout}">
+                        <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout
                     </a>
                 </li>
 

@@ -156,16 +156,12 @@
 <div class="container-fluid text-center space">
 
     <div class="space">
-        <img width="150px" th:src="@{images/DXQquAwVoAAA28c.png}"/>
+        <img width="100px" th:src="@{images/DXQquAwVoAAA28c.png}"/>
         <h1>Welcome to our Coffee Store</h1>
     </div>
 
     <div class="space">
         <a class="h3" th:href="@{/products}">Shop Our Coffee Selections</a>
-    </div>
-
-    <div class="space">
-        <a class="h3" th:href="@{/recipes}">Recipes ideas for our coffee lovers</a>
     </div>
 
     <div sec:authorize="!isAuthenticated()">

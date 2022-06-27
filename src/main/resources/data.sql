@@ -13,8 +13,8 @@ INSERT INTO `online_store`.`products` (`title`, `description`, `image`, `produce
 
 INSERT INTO `users` (`last_name`, `first_name`, `username`, `email`,`password`,`address`,`phone_number`, `role`, `enabled`)
 VALUES
-    ('Angel', 'Stanciu', 'angel', 'adina@gmail.com','$2a$12$s17rpXnWZQxWzGVnz0UttOnLAMuHFizN6ruqnIV7J7GpQV7hKSTiC','Romania, Bucuresti, Strada Gabroveni, 030089','+40721058124', 'ROLE_ADMIN', 1),
-    ('Adina','Gheorghe', 'adina', 'angel@yahoo.com','$2a$12$s17rpXnWZQxWzGVnz0UttOnLAMuHFizN6ruqnIV7J7GpQV7hKSTiC','Romania, Voluntari, Bulevardul Pipera 1, 077190','+40212006464', 'ROLE_USER', 1);
+    ('Angel', 'Stanciu', 'Angel', 'adina@gmail.com','$2a$12$s17rpXnWZQxWzGVnz0UttOnLAMuHFizN6ruqnIV7J7GpQV7hKSTiC','Romania, Bucuresti, Strada Gabroveni, 030089','+40721058124', 'ROLE_ADMIN', 1),
+    ('Adina','Gheorghe', 'Adina', 'angel@yahoo.com','$2a$12$s17rpXnWZQxWzGVnz0UttOnLAMuHFizN6ruqnIV7J7GpQV7hKSTiC','Romania, Voluntari, Bulevardul Pipera 1, 077190','+40212006464', 'ROLE_USER', 1);
 
 INSERT INTO `online_store`.`orders` (`total`, `date`, `user_id`) VALUES ('207.98', '2022-01-15', '1');
 INSERT INTO `online_store`.`orders` (`total`, `date`, `user_id`) VALUES ('171.48', '2022-02-25', '2');
